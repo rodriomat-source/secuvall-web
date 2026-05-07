@@ -152,7 +152,7 @@ ul {
   align-items: center;
   background:
     linear-gradient(rgba(6, 18, 31, 0.72), rgba(6, 18, 31, 0.72)),
-    url('/galisegur-web/img/hero-bg.png') center/cover no-repeat;
+    url('/secuvall-web/img/hero-bg.png') center/cover no-repeat;
   color: var(--white);
   overflow: hidden;
 }
