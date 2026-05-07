@@ -1410,6 +1410,8 @@ p { color: var(--text-soft); }
   align-items: stretch;
   position: relative;
   z-index: 2;
+  /* Espacio extra arriba para que el badge "Más popular" no quede cortado */
+  padding-top: 28px;
 }
 .pricing-card {
   position: relative;
@@ -1420,7 +1422,10 @@ p { color: var(--text-soft); }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: var(--transition);
-  overflow: hidden;
+  /* IMPORTANTE: no usar overflow:hidden aquí porque corta el badge.
+     Usamos overflow:visible y, si necesitamos contener algo (como el ::before del borde),
+     lo hacemos con border-radius del propio elemento. */
+  overflow: visible;
 }
 .pricing-card:hover {
   transform: translateY(-6px);
@@ -1456,10 +1461,10 @@ p { color: var(--text-soft); }
 
 .pricing-badge {
   position: absolute;
-  top: -14px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 6px 18px;
+  padding: 7px 20px;
   background: var(--grad-primary);
   color: #fff;
   font-size: 0.78rem;
@@ -1469,7 +1474,7 @@ p { color: var(--text-soft); }
   border-radius: 999px;
   box-shadow: 0 8px 24px rgba(157,92,255,.5);
   white-space: nowrap;
-  z-index: 2;
+  z-index: 10;
 }
 
 .pricing-header { margin-bottom: 24px; }
@@ -1802,7 +1807,7 @@ p { color: var(--text-soft); }
   .feature-card.offset { margin-left: 0; }
   .legal-content { padding: 36px 28px; }
 
-  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 32px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 40px; padding-top: 24px; }
   .pricing-card.featured { transform: none; }
   .pricing-card.featured:hover { transform: translateY(-6px); }
 }
