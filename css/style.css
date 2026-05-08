@@ -1884,7 +1884,107 @@ p { color: var(--text-soft); }
     transition-duration: 0.01ms !important;
   }
 }
+
 .nav-link.active {
   opacity: 1;
   font-weight: 600;
+}
+
+/* =========================================================
+   ADDONS: Trust bar marquee + Cursor glow global
+   (sin hover; sin mezclar texto con el label fijo)
+   ========================================================= */
+
+/* Glow global de fondo siguiendo puntero */
+.cursor-glow{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;
+  transition: opacity .2s ease;
+  background:
+    radial-gradient(
+      600px 600px at var(--gx, 50%) var(--gy, 50%),
+      rgba(79,124,255,.16),
+      rgba(157,92,255,.10) 35%,
+      rgba(10,14,39,0) 70%
+    );
+}
+/* Asegura que todo el contenido se renderiza encima del glow */
+body > *:not(.cursor-glow){
+  position: relative;
+  z-index: 1;
+}
+
+/* TRUST BAR: variante marquee */
+.trust-bar.trust-bar--marquee{
+  padding: 10px 0; /* sobreescribe el padding grande del trust-bar viejo */
+}
+
+/* Evita que el layout viejo (label centrado + chips) afecte a esta variante */
+.trust-bar.trust-bar--marquee .trust-label,
+.trust-bar.trust-bar--marquee .trust-items{
+  display: none !important;
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-content{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-label{
+  margin:0;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-1) 85%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-sep{
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+  opacity: .8;
+  flex-shrink: 0;
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-items{
+  display:flex;
+  gap: 18px;
+  white-space: nowrap;
+  animation: trust-scroll-left 22s linear infinite;
+  will-change: transform;
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-item{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.trust-bar.trust-bar--marquee .trust-bar-item::before{
+  content:'•';
+  color: var(--violet);
+  opacity: .55;
+}
+
+@keyframes trust-scroll-left{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-50%); }
+}
+
+@media (max-width: 768px){
+  .trust-bar.trust-bar--marquee .trust-bar-label{ font-size: .8rem; padding: 5px 9px; }
+  .trust-bar.trust-bar--marquee .trust-bar-item{ font-size: .75rem; }
 }

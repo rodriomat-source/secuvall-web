@@ -146,7 +146,7 @@
     setTimeout(type, 600);
   }
 
-  /* ---------- Link activo en nav ---------- */
+  /* ---------- Link activo en nav (solo anchors) ---------- */
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
   const sections = Array.from(navLinks)
     .map(l => document.querySelector(l.getAttribute('href')))
@@ -294,9 +294,6 @@
 
   const applyCookiePrefs = (prefs) => {
     // Aquí cargarías scripts según las preferencias
-    // Ejemplo (descomenta cuando tengas Google Analytics):
-    // if (prefs.analytics) loadGoogleAnalytics();
-    // if (prefs.marketing) loadMarketingPixels();
     console.log('[Cookies] Preferencias aplicadas:', prefs);
   };
 
@@ -372,5 +369,28 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && !modal.hidden) hideModal();
   });
+
+  /* ========================================================
+     ADDONS: cursor glow + trust-bar speed
+     ======================================================== */
+
+  // Glow global: actualiza variables CSS con el puntero
+  const cursorGlow = document.querySelector('.cursor-glow');
+  if (cursorGlow) {
+    window.addEventListener('pointermove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      cursorGlow.style.setProperty('--gx', x + '%');
+      cursorGlow.style.setProperty('--gy', y + '%');
+    }, { passive: true });
+  }
+
+  // Trust bar: ajustar duración según ancho del contenido
+  const trustBarItems = document.getElementById('trustBarItems');
+  if (trustBarItems) {
+    const halfWidth = trustBarItems.scrollWidth / 2;
+    const seconds = Math.max(16, halfWidth / 50);
+    trustBarItems.style.animationDuration = seconds + 's';
+  }
 
 })();
