@@ -16,35 +16,45 @@
 <body>
 
   <header class="topbar" id="topbar">
-    <div class="container topbar-content">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">
-          <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
-            <defs><linearGradient id="lgL2" x1="0" y1="0" x2="32" y2="32"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lgL2)" stroke-width="2.2" stroke-linejoin="round"/>
-            <path d="M11 16l3.5 3.5L21 12" stroke="url(#lgL2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">SECUVALL</span>
-      </a>
-      <nav class="nav" id="navMenu">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="index.html#empresa" class="nav-link">Empresa</a>
-        <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="index.html#sectores" class="nav-link">Sectores</a>
-        <a href="planes.html" class="nav-link">Planes</a>
- <a href="index.html#sectores" class="nav-link">Sectores</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="index.html#contacto" class="nav-link">Contacto</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <a href="index.html#contacto" class="btn btn-nav">Solicitar info</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+  <div class="container topbar-content">
+    <a href="index.html" class="brand" aria-label="Secuvall — Inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#4f7cff"/>
+              <stop offset="1" stop-color="#9d5cff"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lg1)" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M11 16l3.5 3.5L21 12" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">SECUVALL</span>
+    </a>
+
+    <nav class="nav" id="navMenu" aria-label="Navegación principal">
+      <a href="index.html#inicio" class="nav-link">Inicio</a>
+      <a href="index.html#empresa" class="nav-link">Empresa</a>
+      <a href="index.html#servicios" class="nav-link">Servicios</a>
+      <a href="planes.html" class="nav-link">Planes</a>
+      <a href="index.html#sectores" class="nav-link">Sectores</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="index.html#contacto" class="nav-link">Contacto</a>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <a href="index.html#contacto" class="btn btn-nav">Solicitar info</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
   <section class="page-hero">
     <div class="hero-bg" aria-hidden="true">

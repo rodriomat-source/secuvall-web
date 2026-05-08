@@ -1884,3 +1884,7 @@ p { color: var(--text-soft); }
     transition-duration: 0.01ms !important;
   }
 }
+.nav-link.active {
+  opacity: 1;
+  font-weight: 600;
+}
