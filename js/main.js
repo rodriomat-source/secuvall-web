@@ -146,7 +146,7 @@
     setTimeout(type, 600);
   }
 
-  /* ---------- Link activo en nav (solo anchors) ---------- */
+  /* ---------- Link activo en nav ---------- */
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
   const sections = Array.from(navLinks)
     .map(l => document.querySelector(l.getAttribute('href')))
@@ -294,6 +294,9 @@
 
   const applyCookiePrefs = (prefs) => {
     // Aquí cargarías scripts según las preferencias
+    // Ejemplo (descomenta cuando tengas Google Analytics):
+    // if (prefs.analytics) loadGoogleAnalytics();
+    // if (prefs.marketing) loadMarketingPixels();
     console.log('[Cookies] Preferencias aplicadas:', prefs);
   };
 
@@ -323,8 +326,7 @@
     modal.classList.remove('show');
     setTimeout(() => modal.hidden = true, 300);
   };
-
-  // Mostrar banner si no hay preferencias guardadas
+    // Mostrar banner si no hay preferencias guardadas
   const existing = getCookiePrefs();
   if (!existing) {
     setTimeout(showBanner, 1000);
@@ -385,7 +387,7 @@
     }, { passive: true });
   }
 
-  // Trust bar: ajustar duración según ancho del contenido
+  // Trust bar: ajustar duración según ancho del contenido (mantiene scroll fluido)
   const trustBarItems = document.getElementById('trustBarItems');
   if (trustBarItems) {
     const halfWidth = trustBarItems.scrollWidth / 2;
