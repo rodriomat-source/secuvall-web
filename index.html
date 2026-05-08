@@ -3,372 +3,530 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Secuvall — Soluciones profesionales de ciberseguridad, vigilancia y servicios auxiliares. Protegemos personas, instalaciones y datos." />
-  <meta name="theme-color" content="#0a0e27" />
-  <meta name="color-scheme" content="dark light" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Secuvall | Ciberseguridad y Sistemas de Protección" />
-  <meta property="og:description" content="Soluciones profesionales de ciberseguridad, vigilancia y servicios auxiliares." />
+  <title>Secuvall | Ciberseguridad y Sistemas de Protección</title>
+  <meta name="description" content="Ciberseguridad, vigilancia profesional y tecnología avanzada para empresas, instituciones y entornos críticos." />
+  <meta name="keywords" content="ciberseguridad, vigilancia, seguridad, control de accesos, monitorización" />
+  <meta name="author" content="Secuvall" />
+  <meta property="og:title" content="Secuvall | Ciberseguridad y Sistemas" />
+  <meta property="og:description" content="Protección inteligente para empresas y entornos críticos." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://rodriomat-source.github.io/secuvall-web/" />
-
-  <title>Secuvall | Ciberseguridad y Sistemas de Protección</title>
-
-  <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Pre-aplicar tema antes de pintar para evitar flash -->
-  <script>
-    (function(){
-      try {
-        var t = localStorage.getItem('secuvall-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', t);
-      } catch(e) {}
-    })();
-  </script>
+  <!-- Estilos inline para el trust-bar modificado -->
+  <style>
+    /* ========== TRUST BAR MODIFICADA ========== */
+    .trust-bar {
+      overflow: hidden;
+      padding: 12px 0;
+      background: linear-gradient(90deg, var(--bg-2), var(--bg-1));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .trust-bar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(79, 124, 255, 0) 0%, rgba(157, 92, 255, 0) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .trust-bar:hover::before {
+      background: linear-gradient(135deg, rgba(79, 124, 255, 0.15) 0%, rgba(157, 92, 255, 0.15) 100%);
+      opacity: 1;
+    }
+
+    .trust-bar:hover {
+      box-shadow: 
+        0 0 30px rgba(79, 124, 255, 0.3),
+        0 0 60px rgba(157, 92, 255, 0.2),
+        inset 0 0 30px rgba(79, 124, 255, 0.1);
+    }
+
+    .trust-bar-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 32px;
+      width: fit-content;
+      max-width: 600px;
+      margin-left: 5%;
+    }
+
+    .trust-bar-label {
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .trust-bar-items {
+      display: flex;
+      gap: 20px;
+      animation: scroll-left 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .trust-bar:hover .trust-bar-items {
+      animation-play-state: paused;
+    }
+
+    .trust-bar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .trust-bar-item::before {
+      content: '•';
+      color: var(--violet);
+      opacity: 0.6;
+    }
+
+    .trust-bar:hover .trust-bar-item {
+      color: var(--text);
+    }
+
+    .trust-bar:hover .trust-bar-item:nth-child(1) {
+      color: #6e95ff;
+    }
+
+    .trust-bar:hover .trust-bar-item:nth-child(2) {
+      color: #8b7aff;
+    }
+
+    .trust-bar:hover .trust-bar-item:nth-child(3) {
+      color: #a66aff;
+    }
+
+    .trust-bar:hover .trust-bar-item:nth-child(4) {
+      color: #c07aff;
+    }
+
+    .trust-bar:hover .trust-bar-item:nth-child(5) {
+      color: #4dd0ff;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Glow effect en el borde inferior */
+    .trust-bar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #4f7cff, #9d5cff, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .trust-bar:hover::after {
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .trust-bar-content {
+        max-width: 100%;
+        padding: 0 16px;
+        margin-left: 0;
+      }
+
+      .trust-bar-label {
+        font-size: 0.8rem;
+      }
+
+      .trust-bar-item {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
   <!-- ========== HEADER ========== -->
-  <header class="topbar" id="topbar">
-  <div class="container topbar-content">
-    <a href="index.html" class="brand" aria-label="Secuvall — Inicio">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4f7cff"/>
-              <stop offset="1" stop-color="#9d5cff"/>
-            </linearGradient>
-          </defs>
-          <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lg1)" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M11 16l3.5 3.5L21 12" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="brand-text">SECUVALL</span>
-    </a>
+  <header id="topbar" class="topbar">
+    <div class="topbar-content container">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="url(#grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#4f7cff" />
+                <stop offset="100%" style="stop-color:#9d5cff" />
+              </linearGradient>
+            </defs>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </span>
+        <span class="brand-text">SECUVALL</span>
+      </a>
 
-    <nav class="nav" id="navMenu" aria-label="Navegación principal">
-      <a href="index.html#inicio" class="nav-link active">Inicio</a>
-      <a href="index.html#empresa" class="nav-link">Empresa</a>
-      <a href="index.html#servicios" class="nav-link">Servicios</a>
-      <a href="planes.html" class="nav-link">Planes</a>
-      <a href="index.html#sectores" class="nav-link">Sectores</a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <a href="index.html#contacto" class="nav-link">Contacto</a>
+      <nav class="nav" id="main-nav">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#empresa" class="nav-link">Empresa</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#sectores" class="nav-link">Sectores</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
 
-      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
 
-      <a href="index.html#contacto" class="btn btn-nav">Solicitar info</a>
-    </nav>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
   <!-- ========== HERO ========== -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="grid-pattern"></div>
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-    </div>
-
-    <div class="container hero-content">
-      <div class="hero-text">
-        <span class="badge">
-          <span class="badge-dot"></span>
+  <section id="inicio">
+    <div class="container">
+      <p class="hero-badge">
+        <span>
+          <span></span>
           Ciberseguridad · Vigilancia · Sistemas
         </span>
-        <h1>
-          Protección <span class="gradient-text">inteligente</span> para
-          <span class="typing-wrap">
-            <span class="typing" id="typing" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">|</span>
-          </span>
-        </h1>
-        <p class="hero-description">
-          En Secuvall combinamos ciberseguridad, vigilancia profesional y tecnología avanzada para ofrecer soluciones integrales adaptadas a empresas, instituciones y entornos críticos.
-        </p>
-        <div class="hero-actions">
-          <a href="#contacto" class="btn btn-primary">
-            Solicitar información
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </p>
+      <h1>
+        Protección <span class="gradient-text">inteligente</span> para
+        <span class="typing-wrap">
+          <span class="typing" id="typing" aria-live="polite"></span>
+          <span class="typing-cursor">|</span>
+        </span>
+      </h1>
+      <p class="hero-desc">
+        En Secuvall combinamos ciberseguridad, vigilancia profesional y tecnología avanzada para ofrecer soluciones integrales adaptadas a empresas, instituciones y entornos críticos.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <p><span data-count="24">0</span><span>/7</span></p>
+          <p>Monitorización</p>
         </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-value" data-count="24">0</span><span class="stat-suffix">/7</span>
-            <span class="stat-label">Monitorización</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" data-count="100">0</span><span class="stat-suffix">%</span>
-            <span class="stat-label">Profesionales</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" data-count="50">0</span><span class="stat-suffix">+</span>
-            <span class="stat-label">Clientes</span>
-          </div>
+        <div class="stat">
+          <p><span data-count="100">0</span><span>%</span></p>
+          <p>Profesionales</p>
+        </div>
+        <div class="stat">
+          <p><span data-count="50">0</span><span>+</span></p>
+          <p>Clientes</p>
         </div>
       </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="orbit-card">
-          <div class="orbit-ring ring-1"></div>
-          <div class="orbit-ring ring-2"></div>
-          <div class="orbit-ring ring-3"></div>
-          <div class="orbit-core">
-            <svg viewBox="0 0 64 64" width="64" height="64" fill="none">
-              <defs>
-                <linearGradient id="lgCore" x1="0" y1="0" x2="64" y2="64">
-                  <stop offset="0" stop-color="#4f7cff"/>
-                  <stop offset="1" stop-color="#9d5cff"/>
-                </linearGradient>
-              </defs>
-              <path d="M32 4L8 14v18c0 14 10 22 24 26 14-4 24-12 24-26V14L32 4z" stroke="url(#lgCore)" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M22 32l7 7 14-15" stroke="url(#lgCore)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="orbit-chip chip-1">🔒 Cifrado</span>
-          <span class="orbit-chip chip-2">📡 IoT</span>
-          <span class="orbit-chip chip-3">🛡️ SOC 24/7</span>
-          <span class="orbit-chip chip-4">⚡ Respuesta</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <span></span>
     </div>
   </section>
 
-  <!-- ========== TRUST BAR ========== -->
-  <section class="trust-bar">
-    <div class="container">
-      <p class="trust-label">Estándares y áreas de actuación</p>
-      <div class="trust-items">
-        <span>ISO 27001 · Buenas prácticas</span>
-        <span>RGPD · Protección de datos</span>
-        <span>SOC · Centro de operaciones</span>
-        <span>Pentesting · Auditoría</span>
-        <span>Vigilancia 24/7</span>
+  <!-- ========== TRUST BAR MODIFICADA ========== -->
+  <div class="trust-bar">
+    <div class="trust-bar-content">
+      <p class="trust-bar-label">Estándares y áreas de actuación</p>
+      <div class="trust-bar-items">
+        <span class="trust-bar-item">ISO 27001 · Buenas prácticas</span>
+        <span class="trust-bar-item">RGPD · Protección de datos</span>
+        <span class="trust-bar-item">SOC · Centro de operaciones</span>
+        <span class="trust-bar-item">Pentesting · Auditoría</span>
+        <span class="trust-bar-item">Vigilancia 24/7</span>
+        <!-- Duplicados para el scroll infinito -->
+        <span class="trust-bar-item">ISO 27001 · Buenas prácticas</span>
+        <span class="trust-bar-item">RGPD · Protección de datos</span>
+        <span class="trust-bar-item">SOC · Centro de operaciones</span>
+        <span class="trust-bar-item">Pentesting · Auditoría</span>
+        <span class="trust-bar-item">Vigilancia 24/7</span>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ========== EMPRESA ========== -->
-  <section class="section" id="empresa">
-    <div class="container grid-2">
-      <div class="text-block reveal">
-        <span class="section-tag">Sobre Secuvall</span>
-        <h2>Una empresa orientada a la <span class="gradient-text">excelencia</span> y la confianza</h2>
-        <p>
-          Secuvall es una empresa comprometida con la prestación de servicios profesionales de seguridad, ciberseguridad y apoyo operativo, adaptados a las necesidades reales de cada cliente.
-        </p>
-        <p>
-          Nuestra filosofía se basa en la cercanía, la capacidad de respuesta, la profesionalidad del equipo y el diseño de soluciones eficaces para entornos empresariales, residenciales e institucionales.
-        </p>
-        <p>
-          Trabajamos con una visión centrada en la calidad del servicio, la mejora continua y el cumplimiento riguroso de los estándares profesionales del sector.
-        </p>
-
-        <ul class="check-list">
-          <li>Equipo certificado y en formación continua</li>
-          <li>Tecnología propia y de partners líderes</li>
-          <li>Protocolos auditables y trazabilidad total</li>
-        </ul>
-      </div>
-
-      <div class="visual-block reveal">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Defensa en capas</h3>
-          <p>Estrategia multi-nivel: perímetro físico, red, endpoint y datos protegidos por igual.</p>
+  <section id="empresa">
+    <div class="container">
+      <div class="empresa-grid">
+        <div class="empresa-text">
+          <p class="section-badge">Sobre Secuvall</p>
+          <h2>Una empresa orientada a la <span class="gradient-text">excelencia</span> y la confianza</h2>
+          <p>
+            Secuvall es una empresa comprometida con la prestación de servicios profesionales de seguridad, ciberseguridad y apoyo operativo, adaptados a las necesidades reales de cada cliente.
+          </p>
+          <p>
+            Nuestra filosofía se basa en la cercanía, la capacidad de respuesta, la profesionalidad del equipo y el diseño de soluciones eficaces para entornos empresariales, residenciales e institucionales.
+          </p>
+          <p>
+            Trabajamos con una visión centrada en la calidad del servicio, la mejora continua y el cumplimiento riguroso de los estándares profesionales del sector.
+          </p>
+          <ul class="check-list">
+            <li>Equipo certificado y en formación continua</li>
+            <li>Tecnología propia y de partners líderes</li>
+            <li>Protocolos auditables y trazabilidad total</li>
+          </ul>
         </div>
-        <div class="feature-card offset">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+
+        <div class="empresa-features">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Defensa en capas</h3>
+            <p>Estrategia multi-nivel: perímetro físico, red, endpoint y datos protegidos por igual.</p>
           </div>
-          <h3>Respuesta 24/7</h3>
-          <p>Equipo activo en todo momento para detección, contención y respuesta a incidentes.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2 4 4 8-8 4 4"/><path d="M21 21H3"/></svg>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Respuesta 24/7</h3>
+            <p>Equipo activo en todo momento para detección, contención y respuesta a incidentes.</p>
           </div>
-          <h3>Mejora continua</h3>
-          <p>Auditorías periódicas, métricas claras y ajuste constante de los protocolos.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </div>
+            <h3>Mejora continua</h3>
+            <p>Auditorías periódicas, métricas claras y ajuste constante de los protocolos.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== SERVICIOS ========== -->
-  <section class="section section-dark" id="servicios">
+  <section id="servicios">
     <div class="container">
-      <div class="section-heading center reveal">
-        <span class="section-tag light">Qué hacemos</span>
+      <div class="section-header">
+        <p class="section-badge">Qué hacemos</p>
         <h2>Servicios <span class="gradient-text">adaptados</span> a cada necesidad</h2>
         <p>Soluciones integrales para reforzar la seguridad, el control y el correcto funcionamiento de espacios públicos y privados.</p>
       </div>
 
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
           </div>
           <h3>Vigilancia y seguridad</h3>
           <p>Protección de instalaciones, bienes y personas con presencia profesional y protocolos adaptados al entorno.</p>
-          <a href="servicios.html#vigilancia" class="card-link" aria-label="Más sobre vigilancia">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#vigilancia" class="service-link" aria-label="Más sobre vigilancia">
+            <span>→</span>
           </a>
         </article>
 
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
           </div>
           <h3>Control de accesos</h3>
           <p>Gestión de entradas y salidas, verificación de identidades y organización de flujos de personas y vehículos.</p>
-          <a href="servicios.html#accesos" class="card-link" aria-label="Más sobre control de accesos">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#accesos" class="service-link" aria-label="Más sobre control de accesos">
+            <span>→</span>
           </a>
         </article>
 
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
           </div>
           <h3>Ciberseguridad</h3>
           <p>Auditorías, hardening, monitorización SIEM, análisis de vulnerabilidades y respuesta a incidentes.</p>
-          <a href="servicios.html#ciberseguridad" class="card-link" aria-label="Más sobre ciberseguridad">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#ciberseguridad" class="service-link" aria-label="Más sobre ciberseguridad">
+            <span>→</span>
           </a>
         </article>
 
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
           </div>
           <h3>Cobertura personalizada</h3>
           <p>Estudio de necesidades y propuesta de soluciones a medida para empresas, comunidades, eventos e instituciones.</p>
-          <a href="servicios.html#cobertura" class="card-link" aria-label="Más sobre cobertura">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#cobertura" class="service-link" aria-label="Más sobre cobertura">
+            <span>→</span>
           </a>
         </article>
 
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
           </div>
           <h3>Servicios auxiliares</h3>
           <p>Personal de apoyo para recepciones, conserjería, supervisión de instalaciones y tareas operativas complementarias.</p>
-          <a href="servicios.html#auxiliares" class="card-link" aria-label="Más sobre servicios auxiliares">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#auxiliares" class="service-link" aria-label="Más sobre servicios auxiliares">
+            <span>→</span>
           </a>
         </article>
 
-        <article class="card reveal">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
           </div>
           <h3>Monitorización 24/7</h3>
           <p>Centro de operaciones permanente, alertas en tiempo real y reportes detallados de actividad.</p>
-          <a href="servicios.html#monitorizacion" class="card-link" aria-label="Más sobre monitorización">
-            <span class="card-arrow">→</span>
+          <a href="servicios.html#monitorizacion" class="service-link" aria-label="Más sobre monitorización">
+            <span>→</span>
           </a>
         </article>
       </div>
 
-      <div class="center-action reveal">
-        <a href="servicios.html" class="btn btn-ghost">
+      <div class="section-cta">
+        <a href="servicios.html" class="btn btn-primary">
           Ver todos los servicios
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ========== SECTORES ========== -->
-  <section class="section section-light" id="sectores">
+  <section id="sectores">
     <div class="container">
-      <div class="section-heading center reveal">
-        <span class="section-tag">Dónde trabajamos</span>
+      <div class="section-header">
+        <p class="section-badge">Dónde trabajamos</p>
         <h2>Sectores a los que damos <span class="gradient-text">servicio</span></h2>
         <p>Diseñamos cada solución según el contexto, normativa y nivel de riesgo del entorno.</p>
       </div>
 
       <div class="sectors-grid">
-        <div class="sector-item reveal"><span class="sector-icon">🏢</span>Empresas y oficinas</div>
-        <div class="sector-item reveal"><span class="sector-icon">🏘️</span>Comunidades de vecinos</div>
-        <div class="sector-item reveal"><span class="sector-icon">🏭</span>Naves industriales</div>
-        <div class="sector-item reveal"><span class="sector-icon">📦</span>Centros logísticos</div>
-        <div class="sector-item reveal"><span class="sector-icon">🎪</span>Eventos y espacios públicos</div>
-        <div class="sector-item reveal"><span class="sector-icon">🛍️</span>Comercios y superficies</div>
-        <div class="sector-item reveal"><span class="sector-icon">🏛️</span>Instituciones y organismos</div>
-        <div class="sector-item reveal"><span class="sector-icon">🏡</span>Centros residenciales</div>
+        <div class="sector-card">
+          <span class="sector-icon">🏢</span>
+          <p>Empresas y oficinas</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏘️</span>
+          <p>Comunidades de vecinos</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏭</span>
+          <p>Naves industriales</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">📦</span>
+          <p>Centros logísticos</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🎪</span>
+          <p>Eventos y espacios públicos</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🛍️</span>
+          <p>Comercios y superficies</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏛️</span>
+          <p>Instituciones y organismos</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏡</span>
+          <p>Centros residenciales</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========== VALORES ========== -->
-  <section class="section values-section" id="valores">
-    <div class="container grid-2">
-      <div class="text-block reveal">
-        <span class="section-tag">Nuestro compromiso</span>
+  <section id="valores">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-badge">Nuestro compromiso</p>
         <h2>La <span class="gradient-text">base</span> de nuestro trabajo</h2>
         <p>Cinco pilares que guían cada decisión, proyecto y relación con nuestros clientes.</p>
       </div>
 
-      <div class="values-grid reveal">
-        <div class="value-item">
-          <div class="value-num">01</div>
-          <div>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-number">01</span>
+          <div class="value-content">
             <h4>Profesionalidad</h4>
             <p>Personal preparado y orientado al servicio.</p>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-num">02</div>
-          <div>
+        <div class="value-card">
+          <span class="value-number">02</span>
+          <div class="value-content">
             <h4>Confianza</h4>
             <p>Relaciones duraderas basadas en la transparencia.</p>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-num">03</div>
-          <div>
+        <div class="value-card">
+          <span class="value-number">03</span>
+          <div class="value-content">
             <h4>Respuesta</h4>
             <p>Soluciones ágiles ante cada necesidad.</p>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-num">04</div>
-          <div>
+        <div class="value-card">
+          <span class="value-number">04</span>
+          <div class="value-content">
             <h4>Adaptabilidad</h4>
             <p>Servicios diseñados a medida de cada cliente.</p>
           </div>
         </div>
-        <div class="value-item">
-          <div class="value-num">05</div>
-          <div>
+        <div class="value-card">
+          <span class="value-number">05</span>
+          <div class="value-content">
             <h4>Calidad</h4>
             <p>Mejora continua en procedimientos y atención.</p>
           </div>
@@ -378,233 +536,154 @@
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="cta-section">
+  <section id="cta">
     <div class="container">
-      <div class="cta-box reveal">
-        <div class="cta-glow" aria-hidden="true"></div>
-        <div class="cta-text">
-          <span class="section-tag light">Atención personalizada</span>
+      <div class="cta-card">
+        <div class="cta-content">
+          <p class="section-badge">Atención personalizada</p>
           <h2>¿Necesitas una propuesta a medida?</h2>
           <p>Contacta con Secuvall y diseñaremos la mejor solución para tu empresa o instalación.</p>
         </div>
-        <a href="#contacto" class="btn btn-primary btn-lg">
+        <a href="#contacto" class="btn btn-primary">
           Contactar ahora
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ========== CONTACTO ========== -->
-  <section class="section" id="contacto">
+  <section id="contacto">
     <div class="container">
-      <div class="section-heading center reveal">
-        <span class="section-tag">Contacto</span>
+      <div class="section-header">
+        <p class="section-badge">Contacto</p>
         <h2>Estamos a tu <span class="gradient-text">disposición</span></h2>
         <p>Escríbenos o llámanos para solicitar información, presupuesto o resolver cualquier consulta.</p>
       </div>
 
       <div class="contact-grid">
-        <div class="contact-card reveal">
-          <h3>Datos de contacto</h3>
-          <ul class="contact-list">
-            <li>
-              <span class="ci">🏢</span>
-              <div><strong>Empresa</strong><span>Secuvall</span></div>
-            </li>
-            <li>
-              <span class="ci">📞</span>
-              <div><strong>Teléfono</strong><a href="tel:+34600000000">+34 600 000 000</a></div>
-            </li>
-            <li>
-              <span class="ci">✉️</span>
-              <div><strong>Email</strong><a href="/cdn-cgi/l/email-protection#7c15121a133c0f191f090a1d1010521f1311"><span class="__cf_email__" data-cfemail="3c55525a537c4f595f494a5d5050125f5351">[email&#160;protected]</span></a></div>
-            </li>
-            <li>
-              <span class="ci">📍</span>
-              <div><strong>Dirección</strong><span>Calle Ejemplo, 123, Galicia, España</span></div>
-            </li>
-            <li>
-              <span class="ci">🕐</span>
-              <div><strong>Horario</strong><span>Lun–Vie · 09:00 – 18:00</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!--
-          FORMULARIO con Web3Forms (gratis, sin servidor):
-          1. Ve a https://web3forms.com/ → introduce tu email → recibirás una "access key"
-          2. Pega tu access key en el value del input "access_key" más abajo
-          3. ¡Listo! Los mensajes te llegarán al email
-        -->
-        <form class="contact-form reveal" id="contactForm" novalidate
-              action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="REEMPLAZA-CON-TU-ACCESS-KEY">
-          <input type="hidden" name="subject" value="Nuevo mensaje desde Secuvall">
-          <input type="hidden" name="from_name" value="Secuvall Web">
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-          <div class="form-row">
-            <div class="field">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-            </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required placeholder="Tu nombre completo" />
           </div>
-          <div class="field">
-            <label for="asunto">Asunto</label>
-            <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?" required />
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="tu@email.com" />
           </div>
-          <div class="field">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos los detalles..." required></textarea>
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000" />
           </div>
-          <label class="checkbox-field">
-            <input type="checkbox" name="rgpd" id="rgpd" required>
-            <span>He leído y acepto la <a href="politica-privacidad.html" target="_blank">política de privacidad</a></span>
-          </label>
-          <button type="submit" class="btn btn-primary btn-block">
-            <span class="btn-label">Enviar consulta</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Enviar mensaje
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
           </button>
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
+
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Teléfono</h4>
+              <p>+34 600 000 000</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>info@secuvall.com</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Ubicación</h4>
+              <p>España</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="footer">
+  <footer>
     <div class="container">
       <div class="footer-content">
-        <div>
-          <a href="index.html" class="brand brand-footer">
-            <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+        <div class="footer-brand">
+          <a href="#inicio" class="brand">
+            <span class="brand-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="url(#grad-footer)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <defs>
-                  <linearGradient id="lgF" x1="0" y1="0" x2="32" y2="32">
-                    <stop offset="0" stop-color="#4f7cff"/>
-                    <stop offset="1" stop-color="#9d5cff"/>
+                  <linearGradient id="grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#4f7cff" />
+                    <stop offset="100%" style="stop-color:#9d5cff" />
                   </linearGradient>
                 </defs>
-                <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lgF)" stroke-width="2.2" stroke-linejoin="round"/>
-                <path d="M11 16l3.5 3.5L21 12" stroke="url(#lgF)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               </svg>
             </span>
             <span class="brand-text">SECUVALL</span>
           </a>
-          <p class="footer-about">Soluciones profesionales en ciberseguridad, vigilancia y servicios auxiliares.</p>
+          <p>Protección inteligente para empresas y entornos críticos.</p>
         </div>
-
-        <div>
-          <h4>Navegación</h4>
-          <ul>
-            <li><a href="#empresa">Empresa</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="planes.html">Planes</a></li>
- <li><a href="blog.html">Blog</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="aviso-legal.html">Aviso legal</a></li>
-            <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-            <li><a href="politica-cookies.html">Política de cookies</a></li>
-            <li><a href="#" id="cookiesReopen">Configurar cookies</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="tel:+34600000000">+34 600 000 000</a></li>
-            <li><a href="/cdn-cgi/l/email-protection#d2bbbcb4bd92a1b7b1a7a4b3bebefcb1bdbf"><span class="__cf_email__" data-cfemail="dcb5b2bab39cafb9bfa9aabdb0b0f2bfb3b1">[email&#160;protected]</span></a></li>
-            <li>Galicia, España</li>
-          </ul>
+        <div class="footer-links">
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="politica-privacidad.html">Privacidad</a>
+          <a href="politica-cookies.html">Cookies</a>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <span>© <span id="year"></span> Secuvall · Todos los derechos reservados</span>
-        <span class="footer-meta">Proyecto intermodular · 2º SMR</span>
+        <p>&copy; 2024 Secuvall. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ========== BANNER COOKIES ========== -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieDesc" hidden>
-    <div class="cookie-content">
-      <div class="cookie-text">
-        <h4 id="cookieTitle">🍪 Usamos cookies</h4>
-        <p id="cookieDesc">Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes aceptarlas, rechazarlas o configurar tus preferencias. Más información en nuestra <a href="politica-cookies.html">política de cookies</a>.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-ghost btn-sm" id="cookieReject">Rechazar</button>
-        <button class="btn btn-ghost btn-sm" id="cookieConfig">Configurar</button>
-        <button class="btn btn-primary btn-sm" id="cookieAccept">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal configuración cookies -->
-  <div class="cookie-modal" id="cookieModal" role="dialog" aria-labelledby="cookieModalTitle" hidden>
-    <div class="cookie-modal-backdrop" data-close></div>
-    <div class="cookie-modal-content">
-      <button class="cookie-modal-close" data-close aria-label="Cerrar">×</button>
-      <h3 id="cookieModalTitle">Configurar cookies</h3>
-      <p>Elige qué cookies quieres permitir. Las técnicas son siempre necesarias para el funcionamiento.</p>
-
-      <div class="cookie-option">
-        <div>
-          <strong>Cookies técnicas</strong>
-          <p>Necesarias para el funcionamiento de la web. No se pueden desactivar.</p>
-        </div>
-        <label class="switch disabled">
-          <input type="checkbox" checked disabled>
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <div class="cookie-option">
-        <div>
-          <strong>Cookies analíticas</strong>
-          <p>Nos ayudan a entender cómo usas la web para poder mejorarla.</p>
-        </div>
-        <label class="switch">
-          <input type="checkbox" id="cookieAnalytics">
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <div class="cookie-option">
-        <div>
-          <strong>Cookies de marketing</strong>
-          <p>Usadas para mostrarte contenido y publicidad relevante.</p>
-        </div>
-        <label class="switch">
-          <input type="checkbox" id="cookieMarketing">
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <div class="cookie-modal-actions">
-        <button class="btn btn-ghost" id="cookieSavePrefs">Guardar preferencias</button>
-        <button class="btn btn-primary" id="cookieAcceptAll">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Botón "volver arriba" -->
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
   </button>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f7fdfa0f822c616',t:'MTc3ODE1MzIyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script src="js/main.js"></script>
+
+  <!-- JavaScript adicional para el trust-bar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const trustBar = document.querySelector('.trust-bar');
+      const trustBarItems = document.querySelector('.trust-bar-items');
+      
+      // Ajustar la velocidad del scroll según el ancho del contenido
+      if (trustBarItems) {
+        const itemsWidth = trustBarItems.scrollWidth / 2;
+        const speed = itemsWidth / 50; // pixels por segundo
+        trustBarItems.style.animationDuration = `${speed}s`;
+      }
+    });
+  </script>
+</body>
 </html>
