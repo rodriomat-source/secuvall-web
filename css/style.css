@@ -1903,3 +1903,18 @@ body > *:not(.cursor-glow){
 .price-amount{
   white-space: nowrap;
 }
+
+/* =========================================================
+   FIX PLANES: que las tarjetas siempre se vean
+   (no depende de reveal/IntersectionObserver)
+   ========================================================= */
+.page-planes .pricing-card.reveal{
+  opacity: 1 !important;
+  transform: none !important;
+}
+.page-planes .pricing-grid.reveal,
+.page-planes .compare-table-wrap.reveal,
+.page-planes .faq-list.reveal{
+  opacity: 1 !important;
+  transform: none !important;
+}
