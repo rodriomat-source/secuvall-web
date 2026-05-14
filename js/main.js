@@ -395,4 +395,29 @@
     trustBarItems.style.animationDuration = seconds + 's';
   }
 
+  /* ---------- Scroll steps progress (sección método) ---------- */
+  const stepsSection = document.getElementById('metodo');
+  const stepsProgress = document.getElementById('stepsProgress');
+
+  if (stepsSection && stepsProgress) {
+    const updateStepsProgress = () => {
+      const rect = stepsSection.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+
+      // tramo útil: desde que entra hasta que sale
+      const start = vh * 0.15;
+      const end = vh * 0.85;
+
+      const total = (rect.height - (end - start));
+      const passed = (start - rect.top);
+
+      const p = total > 0 ? Math.min(Math.max(passed / total, 0), 1) : 0;
+      stepsProgress.style.height = (p * 100).toFixed(2) + '%';
+    };
+
+    window.addEventListener('scroll', updateStepsProgress, { passive: true });
+    window.addEventListener('resize', updateStepsProgress);
+    updateStepsProgress();
+  }
+
 })();
