@@ -807,3 +807,153 @@ textarea {
 .back-to-top.show {
   display: flex;
 }
+
+/* =========================================================
+   HERO VISUAL ENHANCEMENTS
+   ========================================================= */
+
+.hero {
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(127,148,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127,148,255,.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 75%);
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .5;
+}
+
+.glow-1 {
+  width: 500px;
+  height: 500px;
+  background: #4f7cff;
+  top: -120px;
+  left: -120px;
+}
+
+.glow-2 {
+  width: 450px;
+  height: 450px;
+  background: #9d5cff;
+  bottom: -140px;
+  right: -100px;
+}
+
+/* =========================================================
+   ORBIT VISUAL
+   ========================================================= */
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit-card {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(157,92,255,.3);
+  animation: spin 30s linear infinite;
+}
+
+.ring-1 { width: 160px; height: 160px; top: 110px; left: 110px; }
+.ring-2 { width: 240px; height: 240px; top: 70px; left: 70px; animation-direction: reverse; }
+.ring-3 { width: 340px; height: 340px; top: 20px; left: 20px; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.orbit-core {
+  position: absolute;
+  top: 125px;
+  left: 125px;
+  width: 130px;
+  height: 130px;
+  border-radius: 30px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(79,124,255,.3);
+}
+
+.orbit-chip {
+  position: absolute;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  font-size: .75rem;
+}
+
+/* =========================================================
+   GLASS EFFECT
+   ========================================================= */
+
+.pricing-card,
+.service-feature,
+.step-card,
+.value-item,
+.contact-card,
+.contact-form {
+  backdrop-filter: blur(10px);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.pricing-card:hover,
+.service-feature:hover,
+.step-card:hover,
+.value-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+
+.btn-primary {
+  box-shadow: 0 10px 35px rgba(79,124,255,.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 15px 45px rgba(157,92,255,.6);
+}
+
+.section {
+  position: relative;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  height: 1px;
+  background: var(--border);
+  transform: translateX(-50%);
+  opacity: .4;
+}
