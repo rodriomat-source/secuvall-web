@@ -2211,3 +2211,15 @@ body > *:not(.cursor-glow){
 .magnetic{
   transition: transform .2s ease;
 }
+
+/* =========================================================
+   FIX PLANES – evitar reveal oculto
+   ========================================================= */
+
+.page-planes .pricing-card.reveal,
+.page-planes .compare-table-wrap.reveal,
+.page-planes .faq-list.reveal,
+.page-planes .section-heading.reveal{
+  opacity: 1 !important;
+  transform: none !important;
+}
