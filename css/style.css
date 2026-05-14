@@ -1040,6 +1040,8 @@ p { color: var(--text-soft); }
   border-top: 1px solid var(--border);
   padding: 60px 0 0;
   color: var(--text-soft);
+  position: relative;
+  z-index: 2;
 }
 
 .footer{
@@ -1555,7 +1557,7 @@ p { color: var(--text-soft); }
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   opacity: .55;
   transition: opacity .2s ease;
   background:
@@ -1565,12 +1567,6 @@ p { color: var(--text-soft); }
       rgba(157,92,255,.10) 35%,
       rgba(10,14,39,0) 70%
     );
-}
-
-/* Asegura que todo el contenido se renderiza encima del glow */
-body > *:not(.cursor-glow){
-  position: relative;
-  z-index: 1;
 }
 
 /* TRUST BAR: variante marquee (más grande, sin label) */
