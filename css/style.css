@@ -1733,11 +1733,13 @@ body > *:not(.cursor-glow){
     flex-wrap: wrap;
   }
 }
+
 /* =========================================================
    PATCH: layout editorial (empresa + servicios 3 destacados)
    ========================================================= */
 
 /* Empresa: imagen realista */
+
 .empresa-visual{
   display: grid;
   gap: 14px;
@@ -1844,4 +1846,60 @@ body > *:not(.cursor-glow){
     grid-template-columns: 1fr;
     gap: 34px;
   }
+}
+
+/* =========================================================
+   FIX PLANES / PRICING (robusto)
+   Pegar al FINAL de style.css
+   ========================================================= */
+
+/* Grid responsive estable */
+
+.pricing-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Tablet/móvil: una columna */
+@media (max-width: 1024px){
+  .pricing-grid{
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 28px;
+  }
+}
+
+/* No cortar elementos flotantes (badge) */
+.pricing-card{
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Badge "Más popular": visible siempre */
+.pricing-badge{
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* El destacado no debe escalar en móvil (rompe layout) */
+@media (max-width: 1024px){
+  .pricing-card.featured{
+    transform: none !important;
+  }
+  .pricing-card.featured:hover{
+    transform: translateY(-6px) !important;
+  }
+}
+
+/* Evitar desbordes de precio */
+.price-amount{
+  white-space: nowrap;
 }
