@@ -636,3 +636,62 @@ a:hover{
   }
 }
 
+/* =========================================================
+   SCROLL DRIVEN SECTIONS
+   ========================================================= */
+
+.scroll-animate{
+  opacity: 0;
+  transform: translateY(80px) scale(.98);
+  transition: opacity .3s linear, transform .3s linear;
+  will-change: transform, opacity;
+}
+
+.scroll-animate.is-active{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Depth illusion */
+.depth-section{
+  transform: translateY(var(--depthY, 0px));
+  transition: transform .1s linear;
+}
+
+/* =========================================================
+   PAGE TRANSITIONS PREMIUM
+   ========================================================= */
+
+body.page-transition{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+body.page-loaded{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MAGNETIC BUTTON EFFECT
+   ========================================================= */
+
+.magnetic{
+  transition: transform .25s ease;
+}
+
+/* =========================================================
+   GLOBAL SCROLL PROGRESS
+   ========================================================= */
+
+.scroll-progress{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--grad-primary);
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(157,92,255,.6);
+}
