@@ -6,6 +6,11 @@
 (() => {
   'use strict';
 
+document.body.classList.add('page-enter');
+window.addEventListener('load', () => {
+  document.body.classList.add('page-enter-active');
+});
+
   /* ---------- Año dinámico ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -465,5 +470,23 @@ document.querySelectorAll('.btn-primary').forEach(btn=>{
     btn.style.transform = '';
   });
 });
+
+/* ===== Premium Scroll Depth ===== */
+
+const depthSections = document.querySelectorAll('.section');
+
+const updateDepth = () => {
+  const vh = window.innerHeight;
+
+  depthSections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    const progress = (vh - rect.top) / vh;
+    const depth = Math.max(Math.min(progress * -30, 30), -30);
+    sec.style.setProperty('--depthY', depth + 'px');
+  });
+};
+
+window.addEventListener('scroll', updateDepth, { passive: true });
+updateDepth();
 
 })();
