@@ -1,423 +1,298 @@
-/* ========================================================
-   SECUVALL · main.js
-   Tema, menú, reveal, contadores, typing, cookies, form, etc.
-   ======================================================== */
+/* =========================================================
+   SECUVALL · main.js 2026 Premium
+   Tema · Menú · Reveal · Footer Panel · Animaciones · Cookies
+   ========================================================= */
 
 (() => {
   'use strict';
 
-  /* ---------- Año dinámico ---------- */
-  const yearEl = document.getElementById('year');
+  /* =========================================================
+     UTILITIES
+  ========================================================= */
+
+  const qs  = (s, p = document) => p.querySelector(s);
+  const qsa = (s, p = document) => [...p.querySelectorAll(s)];
+
+  /* =========================================================
+     AÑO DINÁMICO
+  ========================================================= */
+
+  const yearEl = qs('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Tema (dark/light) ---------- */
+  /* =========================================================
+     TEMA (DARK / LIGHT)
+  ========================================================= */
+
   const THEME_KEY = 'secuvall-theme';
-  const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
+  const themeToggle = qs('#themeToggle');
 
   const setTheme = (t) => {
     html.setAttribute('data-theme', t);
-    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-    // Actualizar meta theme-color
-    const meta = document.querySelector('meta[name="theme-color"]');
+    try { localStorage.setItem(THEME_KEY, t); } catch(e){}
+    const meta = qs('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', t === 'dark' ? '#0a0e27' : '#f7f9ff');
   };
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme') || 'dark';
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
+  themeToggle?.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme') || 'dark';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
 
-  /* ---------- Menú móvil ---------- */
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
+  /* =========================================================
+     MENÚ MÓVIL
+  ========================================================= */
 
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-    });
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
+  const navToggle = qs('#navToggle');
+  const navMenu   = qs('#navMenu');
 
-  /* ---------- Header con shadow al scroll ---------- */
-  const topbar = document.getElementById('topbar');
-  const backToTop = document.getElementById('backToTop');
+  navToggle?.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+
+  qsa('#navMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle?.setAttribute('aria-expanded', false);
+    });
+  });
+
+  /* =========================================================
+     HEADER + BACK TO TOP
+  ========================================================= */
+
+  const topbar = qs('#topbar');
+  const backToTop = qs('#backToTop');
+
   const onScroll = () => {
     const y = window.scrollY;
-    if (topbar) topbar.classList.toggle('scrolled', y > 20);
-    if (backToTop) backToTop.classList.toggle('show', y > 600);
+
+    topbar?.classList.toggle('scrolled', y > 20);
+    backToTop?.classList.toggle('show', y > 600);
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
+
+  window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 
-  if (backToTop) {
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
 
-  /* ---------- Scroll reveal ---------- */
-  const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && reveals.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          const delay = (i % 4) * 80;
-          setTimeout(() => entry.target.classList.add('is-visible'), delay);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add('is-visible'));
-  }
+  /* =========================================================
+     SCROLL REVEAL GLOBAL
+  ========================================================= */
 
-  /* ---------- Contadores animados ---------- */
-  const counters = document.querySelectorAll('.stat-value[data-count]');
-  if ('IntersectionObserver' in window && counters.length) {
-    const animate = (el) => {
-      const target = parseInt(el.dataset.count, 10) || 0;
-      const duration = 1500;
-      const start = performance.now();
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = target;
-      };
-      requestAnimationFrame(tick);
-    };
-    const counterIO = new IntersectionObserver((entries) => {
+  const revealElements = qsa('.reveal');
+
+  if ('IntersectionObserver' in window && revealElements.length) {
+    const revealIO = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animate(entry.target);
-          counterIO.unobserve(entry.target);
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold:.15 });
+
+    revealElements.forEach(el => revealIO.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* =========================================================
+     FOOTER SILICON VALLEY PANEL
+  ========================================================= */
+
+  const footer = qs('.footer');
+
+  if (footer && 'IntersectionObserver' in window) {
+    const footerIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          footer.classList.add('footer-visible');
+        }
+      });
+    }, { threshold:.35 });
+
+    footerIO.observe(footer);
+  }
+
+  /* =========================================================
+     CONTADORES
+  ========================================================= */
+
+  const counters = qsa('.stat-value[data-count]');
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    const duration = 1500;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start)/duration,1);
+      const eased = 1 - Math.pow(1-progress,3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  if (counters.length && 'IntersectionObserver' in window) {
+    const counterIO = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.6 });
+
     counters.forEach(c => counterIO.observe(c));
   }
 
-  /* ---------- Typing animation en hero ---------- */
-  const typingEl = document.getElementById('typing');
+  /* =========================================================
+     TYPING HERO
+  ========================================================= */
+
+  const typingEl = qs('#typing');
+
   if (typingEl) {
-    const words = ['empresas', 'instituciones', 'datos', 'instalaciones', 'personas'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typeSpeed = 90;
-    const deleteSpeed = 50;
-    const pauseEnd = 1600;
+    const words = ['empresas','instituciones','datos','instalaciones','personas'];
+    let w = 0, c = 0, del = false;
 
     const type = () => {
-      const current = words[wordIndex];
-      if (isDeleting) {
-        typingEl.textContent = current.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(type, 300);
+      const word = words[w];
+
+      if (del) {
+        typingEl.textContent = word.substring(0, c--);
+        if (c < 0) {
+          del = false;
+          w = (w+1)%words.length;
+          setTimeout(type, 400);
           return;
         }
-        setTimeout(type, deleteSpeed);
       } else {
-        typingEl.textContent = current.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-          isDeleting = true;
-          setTimeout(type, pauseEnd);
+        typingEl.textContent = word.substring(0, c++);
+        if (c > word.length) {
+          del = true;
+          setTimeout(type, 1400);
           return;
         }
-        setTimeout(type, typeSpeed);
       }
+
+      setTimeout(type, del ? 50 : 90);
     };
+
     setTimeout(type, 600);
   }
 
-  /* ---------- Link activo en nav ---------- */
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  const sections = Array.from(navLinks)
-    .map(l => document.querySelector(l.getAttribute('href')))
-    .filter(Boolean);
+  /* =========================================================
+     PARALLAX GLOW HERO
+  ========================================================= */
 
-  if (sections.length && 'IntersectionObserver' in window) {
-    const navIO = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-    sections.forEach(s => navIO.observe(s));
+  const glow1 = qs('.glow-1');
+  const glow2 = qs('.glow-2');
+
+  if (glow1 && glow2 && window.matchMedia('(min-width:1024px)').matches) {
+    document.addEventListener('pointermove', (e) => {
+      const x = (e.clientX / window.innerWidth - .5) * 30;
+      const y = (e.clientY / window.innerHeight - .5) * 30;
+
+      glow1.style.transform = `translate(${x}px,${y}px)`;
+      glow2.style.transform = `translate(${-x}px,${-y}px)`;
+    }, { passive:true });
   }
 
-  /* ---------- Formulario ---------- */
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
+  /* =========================================================
+     CURSOR GLOW GLOBAL
+  ========================================================= */
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      status.className = 'form-status';
-      status.textContent = '';
+  const cursorGlow = qs('.cursor-glow');
 
-      // Validación
-      const data = {
-        nombre: form.nombre?.value.trim() || '',
-        email: form.email?.value.trim() || '',
-        asunto: form.asunto?.value.trim() || '',
-        mensaje: form.mensaje?.value.trim() || '',
-        rgpd: form.rgpd?.checked
-      };
-
-      if (!data.nombre || !data.email || !data.asunto || !data.mensaje) {
-        status.classList.add('error');
-        status.textContent = '⚠️ Por favor, completa todos los campos.';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-        status.classList.add('error');
-        status.textContent = '⚠️ Introduce un email válido.';
-        return;
-      }
-      if (!data.rgpd) {
-        status.classList.add('error');
-        status.textContent = '⚠️ Debes aceptar la política de privacidad.';
-        return;
-      }
-
-      const btn = form.querySelector('button[type="submit"]');
-      btn.classList.add('loading');
-      btn.disabled = true;
-
-      // Insertar spinner si no existe
-      if (!btn.querySelector('.spinner')) {
-        const sp = document.createElement('span');
-        sp.className = 'spinner';
-        btn.prepend(sp);
-      }
-
-      try {
-        const accessKey = form.querySelector('input[name="access_key"]')?.value;
-        const isConfigured = accessKey && accessKey !== 'REEMPLAZA-CON-TU-ACCESS-KEY';
-
-        if (isConfigured) {
-          // Envío real con Web3Forms
-          const formData = new FormData(form);
-          const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-          });
-          const json = await res.json();
-          if (json.success) {
-            status.classList.add('success');
-            status.textContent = '✓ ¡Gracias! Hemos recibido tu mensaje. Te responderemos pronto.';
-            form.reset();
-          } else {
-            throw new Error(json.message || 'Error al enviar');
-          }
-        } else {
-          // Modo demo (no hay access key configurada)
-          await new Promise(r => setTimeout(r, 800));
-          status.classList.add('success');
-          status.textContent = '✓ ¡Mensaje recibido! (Modo demo · configura tu access key de Web3Forms para envíos reales)';
-          form.reset();
-        }
-      } catch (err) {
-        status.classList.add('error');
-        status.textContent = '✗ Error al enviar. Inténtalo de nuevo o escríbenos a info@secuvall.com';
-      } finally {
-        btn.classList.remove('loading');
-        btn.disabled = false;
-      }
-    });
+  if (cursorGlow) {
+    window.addEventListener('pointermove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      cursorGlow.style.setProperty('--gx', x+'%');
+      cursorGlow.style.setProperty('--gy', y+'%');
+    }, { passive:true });
   }
 
-  /* ---------- Parallax glows ---------- */
-  const glow1 = document.querySelector('.glow-1');
-  const glow2 = document.querySelector('.glow-2');
-  if (glow1 && glow2 && window.matchMedia('(min-width: 1024px)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 30;
-      const y = (e.clientY / window.innerHeight - 0.5) * 30;
-      glow1.style.transform = `translate(${x}px, ${y}px)`;
-      glow2.style.transform = `translate(${-x}px, ${-y}px)`;
-    });
-  }
+  /* =========================================================
+     COOKIES SYSTEM
+  ========================================================= */
 
-  /* ========================================================
-     COOKIES — Banner + Modal de configuración
-     ======================================================== */
   const COOKIE_KEY = 'secuvall-cookies';
-  const banner = document.getElementById('cookieBanner');
-  const modal = document.getElementById('cookieModal');
-  const btnAccept = document.getElementById('cookieAccept');
-  const btnReject = document.getElementById('cookieReject');
-  const btnConfig = document.getElementById('cookieConfig');
-  const btnSavePrefs = document.getElementById('cookieSavePrefs');
-  const btnAcceptAll = document.getElementById('cookieAcceptAll');
-  const btnReopen = document.getElementById('cookiesReopen');
-  const inpAnalytics = document.getElementById('cookieAnalytics');
-  const inpMarketing = document.getElementById('cookieMarketing');
 
-  const getCookiePrefs = () => {
+  const banner = qs('#cookieBanner');
+  const modal  = qs('#cookieModal');
+
+  const btnAccept     = qs('#cookieAccept');
+  const btnReject     = qs('#cookieReject');
+  const btnConfig     = qs('#cookieConfig');
+  const btnSavePrefs  = qs('#cookieSavePrefs');
+  const btnAcceptAll  = qs('#cookieAcceptAll');
+  const btnReopen     = qs('#cookiesReopen');
+
+  const inpAnalytics  = qs('#cookieAnalytics');
+  const inpMarketing  = qs('#cookieMarketing');
+
+  const getPrefs = () => {
     try {
-      const raw = localStorage.getItem(COOKIE_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) { return null; }
+      return JSON.parse(localStorage.getItem(COOKIE_KEY));
+    } catch { return null; }
   };
 
-  const saveCookiePrefs = (prefs) => {
+  const savePrefs = (prefs) => {
     try {
       localStorage.setItem(COOKIE_KEY, JSON.stringify({
         ...prefs,
         timestamp: Date.now()
       }));
-    } catch (e) {}
-    applyCookiePrefs(prefs);
+    } catch(e){}
   };
 
-  const applyCookiePrefs = (prefs) => {
-    // Aquí cargarías scripts según las preferencias
-    // Ejemplo (descomenta cuando tengas Google Analytics):
-    // if (prefs.analytics) loadGoogleAnalytics();
-    // if (prefs.marketing) loadMarketingPixels();
-    console.log('[Cookies] Preferencias aplicadas:', prefs);
-  };
-
-  const showBanner = () => {
-    if (!banner) return;
-    banner.hidden = false;
-    requestAnimationFrame(() => banner.classList.add('show'));
-  };
-
-  const hideBanner = () => {
-    if (!banner) return;
-    banner.classList.remove('show');
-    setTimeout(() => banner.hidden = true, 500);
-  };
-
-  const showModal = () => {
-    if (!modal) return;
-    const prefs = getCookiePrefs();
-    if (inpAnalytics) inpAnalytics.checked = prefs?.analytics || false;
-    if (inpMarketing) inpMarketing.checked = prefs?.marketing || false;
-    modal.hidden = false;
-    requestAnimationFrame(() => modal.classList.add('show'));
-  };
-
-  const hideModal = () => {
-    if (!modal) return;
-    modal.classList.remove('show');
-    setTimeout(() => modal.hidden = true, 300);
-  };
-    // Mostrar banner si no hay preferencias guardadas
-  const existing = getCookiePrefs();
-  if (!existing) {
-    setTimeout(showBanner, 1000);
-  } else {
-    applyCookiePrefs(existing);
+  if (!getPrefs()) {
+    setTimeout(() => banner?.classList.add('show'), 900);
   }
 
   btnAccept?.addEventListener('click', () => {
-    saveCookiePrefs({ technical: true, analytics: true, marketing: true });
-    hideBanner();
+    savePrefs({technical:true,analytics:true,marketing:true});
+    banner?.classList.remove('show');
   });
+
   btnReject?.addEventListener('click', () => {
-    saveCookiePrefs({ technical: true, analytics: false, marketing: false });
-    hideBanner();
+    savePrefs({technical:true,analytics:false,marketing:false});
+    banner?.classList.remove('show');
   });
+
   btnConfig?.addEventListener('click', () => {
-    showModal();
+    modal?.classList.add('show');
   });
+
   btnSavePrefs?.addEventListener('click', () => {
-    saveCookiePrefs({
-      technical: true,
-      analytics: inpAnalytics?.checked || false,
-      marketing: inpMarketing?.checked || false
+    savePrefs({
+      technical:true,
+      analytics:inpAnalytics?.checked || false,
+      marketing:inpMarketing?.checked || false
     });
-    hideModal();
-    hideBanner();
+    modal?.classList.remove('show');
+    banner?.classList.remove('show');
   });
+
   btnAcceptAll?.addEventListener('click', () => {
-    saveCookiePrefs({ technical: true, analytics: true, marketing: true });
-    hideModal();
-    hideBanner();
+    savePrefs({technical:true,analytics:true,marketing:true});
+    modal?.classList.remove('show');
+    banner?.classList.remove('show');
   });
-  btnReopen?.addEventListener('click', (e) => {
+
+  btnReopen?.addEventListener('click', e => {
     e.preventDefault();
-    showModal();
+    modal?.classList.add('show');
   });
-
-  // Cerrar modal con backdrop o botón close
-  modal?.querySelectorAll('[data-close]').forEach(el => {
-    el.addEventListener('click', hideModal);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.hidden) hideModal();
-  });
-
-  /* ========================================================
-     ADDONS: cursor glow + trust-bar speed
-     ======================================================== */
-
-  // Glow global: actualiza variables CSS con el puntero
-  const cursorGlow = document.querySelector('.cursor-glow');
-  if (cursorGlow) {
-    window.addEventListener('pointermove', (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      cursorGlow.style.setProperty('--gx', x + '%');
-      cursorGlow.style.setProperty('--gy', y + '%');
-    }, { passive: true });
-  }
-
-  // Trust bar: ajustar duración según ancho del contenido (mantiene scroll fluido)
-  const trustBarItems = document.getElementById('trustBarItems');
-  if (trustBarItems) {
-    const halfWidth = trustBarItems.scrollWidth / 2;
-    const seconds = Math.max(16, halfWidth / 50);
-    trustBarItems.style.animationDuration = seconds + 's';
-  }
-
-  /* ---------- Scroll steps progress (sección método) ---------- */
-  const stepsSection = document.getElementById('metodo');
-  const stepsProgress = document.getElementById('stepsProgress');
-
-  if (stepsSection && stepsProgress) {
-    const updateStepsProgress = () => {
-      const rect = stepsSection.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-
-      // tramo útil: desde que entra hasta que sale
-      const start = vh * 0.15;
-      const end = vh * 0.85;
-
-      const total = (rect.height - (end - start));
-      const passed = (start - rect.top);
-
-      const p = total > 0 ? Math.min(Math.max(passed / total, 0), 1) : 0;
-      stepsProgress.style.height = (p * 100).toFixed(2) + '%';
-    };
-
-    window.addEventListener('scroll', updateStepsProgress, { passive: true });
-    window.addEventListener('resize', updateStepsProgress);
-    updateStepsProgress();
-  }
 
 })();
