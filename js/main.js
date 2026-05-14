@@ -420,4 +420,50 @@
     updateStepsProgress();
   }
 
+/* ========= FOOTER REVEAL ========= */
+
+const footer = document.querySelector('.footer');
+if(footer && 'IntersectionObserver' in window){
+  const footerIO = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        footer.classList.add('footer-visible');
+      }
+    });
+  },{threshold:.3});
+  footerIO.observe(footer);
+}
+
+/* ========= PREMIUM DEPTH SCROLL ========= */
+
+const depthSections = document.querySelectorAll('.section');
+
+const updateDepth = () => {
+  const vh = window.innerHeight;
+
+  depthSections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    const progress = (vh - rect.top) / vh;
+    const depth = Math.max(Math.min(progress * -40, 40), -40);
+    sec.style.setProperty('--depthY', depth + 'px');
+  });
+};
+
+window.addEventListener('scroll', updateDepth, { passive:true });
+updateDepth();
+
+/* ========= MAGNETIC BUTTON ========= */
+
+document.querySelectorAll('.btn-primary').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    btn.style.transform = `translate(${x*0.15}px,${y*0.15}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{
+    btn.style.transform = '';
+  });
+});
+
 })();

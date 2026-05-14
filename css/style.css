@@ -290,6 +290,25 @@ p { color: var(--text-soft); }
   color: #fff;
   box-shadow: var(--shadow-glow);
 }
+
+.btn-primary{
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at center, rgba(255,255,255,.35), transparent 60%);
+  opacity:0;
+  transition: opacity .3s ease;
+}
+
+.btn-primary:hover::after{
+  opacity:1;
+}
+
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 50px rgba(157, 92, 255, .5);
@@ -734,6 +753,24 @@ p { color: var(--text-soft); }
   margin-bottom: 22px;
   transition: var(--transition);
 }
+
+.card,
+.pricing-card,
+.step-card,
+.service-feature,
+.value-item{
+  transform-style: preserve-3d;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+}
+
+.card:hover,
+.pricing-card:hover,
+.step-card:hover,
+.service-feature:hover,
+.value-item:hover{
+  transform: translateY(-8px) scale(1.02);
+}
+
 [data-theme="light"] .card-icon-wrap { color: var(--blue); }
 .card-icon-wrap svg { width: 26px; height: 26px; }
 .card:hover .card-icon-wrap {
@@ -1004,6 +1041,18 @@ p { color: var(--text-soft); }
   padding: 60px 0 0;
   color: var(--text-soft);
 }
+
+.footer{
+  opacity:0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.footer.footer-visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -2148,4 +2197,17 @@ body > *:not(.cursor-glow){
   color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1.6;
+}
+
+/* =========================================================
+   PREMIUM SCROLL DEPTH
+   ========================================================= */
+
+.depth-section{
+  transform: translateY(var(--depthY,0px));
+  transition: transform .1s linear;
+}
+
+.magnetic{
+  transition: transform .2s ease;
 }
