@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://rodriomat-source.github.io/secuvall-web/#organization",
+      "name": "Secuvall",
+      "url": "https://rodriomat-source.github.io/secuvall-web/",
+      "logo": "https://rodriomat-source.github.io/secuvall-web/img/logo.png",
+      "image": "https://rodriomat-source.github.io/secuvall-web/img/empresa-real.webp",
+      "description": "Soluciones profesionales de ciberseguridad, vigilancia, control de accesos y servicios auxiliares.",
+      "email": "info@secuvall.com",
+      "telephone": "+34600000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Ejemplo, 123",
+        "addressRegion": "Galicia",
+        "addressCountry": "ES"
+      },
+      "areaServed": "ES",
+      "priceRange": "€€"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rodriomat-source.github.io/secuvall-web/#website",
+      "url": "https://rodriomat-source.github.io/secuvall-web/",
+      "name": "Secuvall",
+      "publisher": { "@id": "https://rodriomat-source.github.io/secuvall-web/#organization" },
+      "inLanguage": "es-ES"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://rodriomat-source.github.io/secuvall-web/#service",
+      "name": "Servicios de ciberseguridad y vigilancia",
+      "provider": { "@id": "https://rodriomat-source.github.io/secuvall-web/#organization" },
+      "areaServed": "ES",
+      "serviceType": ["Ciberseguridad", "Vigilancia", "Control de accesos", "Monitorización"]
+    }
+  ]
+}

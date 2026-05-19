@@ -14,14 +14,54 @@
   const THEME_KEY = 'secuvall-theme';
   const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), details summary, [tabindex]:not([tabindex="-1"])';
+
+  const getFocusable = (root) => Array.from(root.querySelectorAll(focusableSelector))
+    .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden') && el.offsetParent !== null);
+
+  let trapCleanup = null;
+  const trapFocus = (container, onEscape) => {
+    trapCleanup?.();
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onEscape?.();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusables = getFocusable(container);
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    trapCleanup = () => {
+      document.removeEventListener('keydown', onKeyDown);
+      trapCleanup = null;
+    };
+    return trapCleanup;
+  };
 
   const setTheme = (t) => {
     html.setAttribute('data-theme', t);
     try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-    // Actualizar meta theme-color
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', t === 'dark' ? '#0a0e27' : '#f7f9ff');
+    if (themeToggle) {
+      const isLight = t === 'light';
+      themeToggle.setAttribute('aria-pressed', String(isLight));
+      themeToggle.setAttribute('aria-label', isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+      themeToggle.title = isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro';
+    }
   };
+  setTheme(html.getAttribute('data-theme') || 'dark');
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -35,16 +75,41 @@
   const navMenu = document.getElementById('navMenu');
 
   if (navToggle && navMenu) {
+    let navTrapCleanup = null;
+    const isMobileNav = () => window.matchMedia('(max-width: 768px)').matches;
+    navMenu.setAttribute('aria-hidden', String(isMobileNav()));
+
+    const closeMenu = ({ restoreFocus = false } = {}) => {
+      navMenu.classList.remove('open');
+      navMenu.setAttribute('aria-hidden', String(isMobileNav()));
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Abrir menú');
+      navTrapCleanup?.();
+      navTrapCleanup = null;
+      if (restoreFocus) navToggle.focus();
+    };
+
+    const openMenu = () => {
+      navMenu.classList.add('open');
+      navMenu.setAttribute('aria-hidden', 'false');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Cerrar menú');
+      const focusables = getFocusable(navMenu);
+      focusables[0]?.focus();
+      navTrapCleanup = trapFocus(navMenu, () => closeMenu({ restoreFocus: true }));
+    };
+
     navToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      navMenu.classList.contains('open') ? closeMenu({ restoreFocus: true }) : openMenu();
     });
+
     navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    window.addEventListener('resize', () => {
+      if (!isMobileNav()) closeMenu();
+      navMenu.setAttribute('aria-hidden', String(isMobileNav() && !navMenu.classList.contains('open')));
     });
   }
 
@@ -120,36 +185,46 @@
     const deleteSpeed = 50;
     const pauseEnd = 1600;
 
-    const type = () => {
-      const current = words[wordIndex];
-      if (isDeleting) {
-        typingEl.textContent = current.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(type, 300);
-          return;
+    if (prefersReducedMotion) {
+      typingEl.textContent = words[0];
+    } else {
+      const type = () => {
+        const current = words[wordIndex];
+        if (isDeleting) {
+          typingEl.textContent = current.substring(0, Math.max(charIndex - 1, 0));
+          charIndex--;
+          if (charIndex <= 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            window.setTimeout(type, 300);
+            return;
+          }
+          window.setTimeout(type, deleteSpeed);
+        } else {
+          typingEl.textContent = current.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex >= current.length) {
+            isDeleting = true;
+            window.setTimeout(type, pauseEnd);
+            return;
+          }
+          window.setTimeout(type, typeSpeed);
         }
-        setTimeout(type, deleteSpeed);
-      } else {
-        typingEl.textContent = current.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-          isDeleting = true;
-          setTimeout(type, pauseEnd);
-          return;
-        }
-        setTimeout(type, typeSpeed);
-      }
-    };
-    setTimeout(type, 600);
+      };
+      window.setTimeout(type, 600);
+    }
   }
 
   /* ---------- Link activo en nav ---------- */
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const getLinkHash = (link) => {
+    try { return new URL(link.getAttribute('href'), window.location.href).hash; }
+    catch (e) { return ''; }
+  };
   const sections = Array.from(navLinks)
-    .map(l => document.querySelector(l.getAttribute('href')))
+    .map(l => getLinkHash(l))
+    .filter(Boolean)
+    .map(hash => document.querySelector(hash))
     .filter(Boolean);
 
   if (sections.length && 'IntersectionObserver' in window) {
@@ -158,7 +233,7 @@
         if (entry.isIntersecting) {
           const id = entry.target.id;
           navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            link.classList.toggle('active', getLinkHash(link) === `#${id}`);
           });
         }
       });
@@ -251,7 +326,7 @@
   /* ---------- Parallax glows ---------- */
   const glow1 = document.querySelector('.glow-1');
   const glow2 = document.querySelector('.glow-2');
-  if (glow1 && glow2 && window.matchMedia('(min-width: 1024px)').matches) {
+  if (!prefersReducedMotion && glow1 && glow2 && window.matchMedia('(min-width: 1024px)').matches) {
     document.addEventListener('mousemove', (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 30;
       const y = (e.clientY / window.innerHeight - 0.5) * 30;
@@ -312,19 +387,37 @@
     setTimeout(() => banner.hidden = true, 500);
   };
 
+  let lastFocusedBeforeModal = null;
+  let modalTrapCleanup = null;
+
   const showModal = () => {
     if (!modal) return;
     const prefs = getCookiePrefs();
     if (inpAnalytics) inpAnalytics.checked = prefs?.analytics || false;
     if (inpMarketing) inpMarketing.checked = prefs?.marketing || false;
+    lastFocusedBeforeModal = document.activeElement;
     modal.hidden = false;
-    requestAnimationFrame(() => modal.classList.add('show'));
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(() => {
+      modal.classList.add('show');
+      const target = modal.querySelector('.cookie-modal-close') || modal.querySelector('.cookie-modal-content');
+      target?.focus();
+      modalTrapCleanup = trapFocus(modal, hideModal);
+    });
   };
 
   const hideModal = () => {
-    if (!modal) return;
+    if (!modal || modal.hidden) return;
     modal.classList.remove('show');
-    setTimeout(() => modal.hidden = true, 300);
+    document.body.classList.remove('modal-open');
+    modalTrapCleanup?.();
+    modalTrapCleanup = null;
+    setTimeout(() => {
+      modal.hidden = true;
+      if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+        lastFocusedBeforeModal.focus();
+      }
+    }, 300);
   };
     // Mostrar banner si no hay preferencias guardadas
   const existing = getCookiePrefs();
@@ -368,9 +461,6 @@
   modal?.querySelectorAll('[data-close]').forEach(el => {
     el.addEventListener('click', hideModal);
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.hidden) hideModal();
-  });
 
   /* ========================================================
      ADDONS: cursor glow + trust-bar speed
@@ -378,7 +468,7 @@
 
   // Glow global: actualiza variables CSS con el puntero
   const cursorGlow = document.querySelector('.cursor-glow');
-  if (cursorGlow) {
+  if (cursorGlow && !prefersReducedMotion) {
     window.addEventListener('pointermove', (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
@@ -449,12 +539,14 @@ const updateDepth = () => {
   });
 };
 
-window.addEventListener('scroll', updateDepth, { passive:true });
-updateDepth();
+if (!prefersReducedMotion) {
+  window.addEventListener('scroll', updateDepth, { passive:true });
+  updateDepth();
+}
 
 /* ========= MAGNETIC BUTTON ========= */
 
-document.querySelectorAll('.btn-primary').forEach(btn=>{
+if (!prefersReducedMotion) document.querySelectorAll('.btn-primary').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width/2;

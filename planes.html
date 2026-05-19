@@ -1,386 +1,246 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+
+<html data-theme="dark" lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Planes de Secuvall: Base, Pro y Premium. Soluciones de ciberseguridad y soporte adaptadas a cada empresa." />
-  <meta name="theme-color" content="#0a0e27" />
-  <title>Planes y Precios | Secuvall</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-  <script>(function(){try{var t=localStorage.getItem('secuvall-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Planes de Secuvall: Base, Pro y Premium. Soluciones de ciberseguridad y soporte adaptadas a cada empresa." name="description"/>
+<meta content="#0a0e27" name="theme-color"/>
+<title>Planes y Precios | Secuvall</title>
+<link href="img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<script>(function(){try{var t=localStorage.getItem('secuvall-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link href="https://rodriomat-source.github.io/secuvall-web/planes.html" rel="canonical"/>
+  <meta content="https://rodriomat-source.github.io/secuvall-web/planes.html" property="og:url"/>
+  <meta content="https://rodriomat-source.github.io/secuvall-web/img/empresa-real.webp" property="og:image"/></head>
 <body class="page-planes">
+  <div data-component="site-header"></div>
 
- <!-- Glow global de fondo -->
-  <div class="cursor-glow" aria-hidden="true"></div>
-
-  <header class="topbar" id="topbar">
-  <div class="container topbar-content">
-    <a href="index.html" class="brand" aria-label="Secuvall — Inicio">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4f7cff"/>
-              <stop offset="1" stop-color="#9d5cff"/>
-            </linearGradient>
-          </defs>
-          <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lg1)" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M11 16l3.5 3.5L21 12" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="brand-text">SECUVALL</span>
-    </a>
-
-    <nav class="nav" id="navMenu" aria-label="Navegación principal">
-      <a href="index.html#inicio" class="nav-link">Inicio</a>
-      <a href="index.html#empresa" class="nav-link">Empresa</a>
-      <a href="index.html#servicios" class="nav-link">Servicios</a>
-      <a href="planes.html" class="nav-link active">Planes</a>
-      <a href="index.html#sectores" class="nav-link">Sectores</a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <a href="index.html#contacto" class="nav-link">Contacto</a>
-
-      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-
-      <a href="index.html#contacto" class="btn btn-nav">Solicitar info</a>
-    </nav>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="grid-pattern"></div>
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-    </div>
-    <div class="container">
-      <nav class="breadcrumb"><a href="index.html">Inicio</a> <span>›</span> <span>Planes</span></nav>
-      <span class="badge"><span class="badge-dot"></span>Planes y precios</span>
-      <h1>Elige el plan que <span class="gradient-text">mejor se adapta</span> a ti</h1>
-      <p>Tres niveles diseñados para cubrir desde necesidades básicas hasta protección avanzada 24/7. Sin permanencia, sin sorpresas.</p>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section class="section pricing-section">
-    <div class="container">
-      <div class="pricing-grid">
-
-        <!-- BASE -->
-        <article class="pricing-card reveal">
-          <div class="pricing-header">
-            <span class="pricing-tag">Esenciales</span>
-            <h3>Base</h3>
-            <p class="pricing-desc">Para pequeñas empresas que necesitan cubrir lo fundamental.</p>
-          </div>
-          <div class="pricing-price">
-            <span class="price-amount">199<span class="price-currency">€</span></span>
-            <span class="price-period">/mes</span>
-          </div>
-          <ul class="pricing-features">
-            <li><span class="check">✓</span> Soporte por tickets (horario laboral)</li>
-            <li><span class="check">✓</span> Mantenimiento y actualizaciones</li>
-            <li><span class="check">✓</span> Antivirus/EDR básico</li>
-            <li><span class="check">✓</span> Informe periódico simplificado</li>
-            <li class="muted"><span class="cross">×</span> Gestión de backups</li>
-            <li class="muted"><span class="cross">×</span> Monitorización 24/7</li>
-            <li class="muted"><span class="cross">×</span> Hardening avanzado</li>
-          </ul>
-          <a href="index.html#contacto" class="btn btn-ghost btn-block">Empezar con Base</a>
-        </article>
-
-        <!-- PRO (Destacado) -->
-        <article class="pricing-card featured reveal">
-          <div class="pricing-badge">⭐ Más popular</div>
-          <div class="pricing-header">
-            <span class="pricing-tag">Recomendado</span>
-            <h3>Pro</h3>
-            <p class="pricing-desc">Para empresas que buscan un equilibrio entre protección y precio.</p>
-          </div>
-          <div class="pricing-price">
-            <span class="price-amount">449<span class="price-currency">€</span></span>
-            <span class="price-period">/mes</span>
-          </div>
-          <ul class="pricing-features">
-            <li class="highlight"><span class="check">✓</span> <strong>Todo lo del plan Base, y además:</strong></li>
-            <li><span class="check">✓</span> Gestión de backups y recuperación (según alcance)</li>
-            <li><span class="check">✓</span> Soporte con prioridad media</li>
-            <li><span class="check">✓</span> Revisión mensual de seguridad</li>
-            <li class="muted"><span class="cross">×</span> Monitorización 24/7</li>
-            <li class="muted"><span class="cross">×</span> Hardening avanzado</li>
-          </ul>
-          <a href="index.html#contacto" class="btn btn-primary btn-block">Empezar con Pro</a>
-        </article>
-
-        <!-- PREMIUM -->
-        <article class="pricing-card premium reveal">
-          <div class="pricing-header">
-            <span class="pricing-tag">Máxima protección</span>
-            <h3>Premium</h3>
-            <p class="pricing-desc">Para entornos críticos donde la disponibilidad lo es todo.</p>
-          </div>
-          <div class="pricing-price">
-            <span class="price-amount">899<span class="price-currency">€</span></span>
-            <span class="price-period">/mes</span>
-          </div>
-          <ul class="pricing-features">
-            <li class="highlight"><span class="check">✓</span> <strong>Todo lo del plan Pro, y además:</strong></li>
-            <li><span class="check premium-check">✓</span> <strong>Monitorización 24/7</strong></li>
-            <li><span class="check premium-check">✓</span> Respuesta prioritaria</li>
-            <li><span class="check premium-check">✓</span> Hardening avanzado y revisión periódica</li>
-          </ul>
-          <a href="index.html#contacto" class="btn btn-ghost btn-block">Empezar con Premium</a>
-        </article>
-
-      </div>
-
-      <p class="pricing-note">
-        <em>* Precios orientativos. Ajuste según nº de equipos/usuarios y criticidad. Solicita un presupuesto personalizado para tu caso concreto.</em>
-      </p>
-    </div>
-  </section>
-
-  <!-- Comparativa rápida -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-heading center reveal">
-        <span class="section-tag light">Comparativa rápida</span>
-        <h2>Compara los <span class="gradient-text">planes</span></h2>
-        <p>Una vista rápida de las características incluidas en cada plan.</p>
-      </div>
-
-      <div class="compare-table-wrap reveal">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Característica</th>
-              <th>Base</th>
-              <th class="featured-col">Pro ⭐</th>
-              <th>Premium</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Soporte por tickets (horario laboral)</td>
-              <td><span class="ok">✓</span></td>
-              <td class="featured-col"><span class="ok">✓</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr>
-              <td>Mantenimiento y actualizaciones</td>
-              <td><span class="ok">✓</span></td>
-              <td class="featured-col"><span class="ok">✓</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr>
-              <td>Antivirus / EDR básico</td>
-              <td><span class="ok">✓</span></td>
-              <td class="featured-col"><span class="ok">✓</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr>
-              <td>Informe periódico</td>
-              <td>Simplificado</td>
-              <td class="featured-col">Simplificado</td>
-              <td>Detallado</td>
-            </tr>
-            <tr>
-              <td>Gestión de backups y recuperación</td>
-              <td><span class="ko">×</span></td>
-              <td class="featured-col"><span class="ok">✓</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr>
-              <td>Prioridad de soporte</td>
-              <td>Estándar</td>
-              <td class="featured-col">Media</td>
-              <td>Alta</td>
-            </tr>
-            <tr>
-              <td>Revisión periódica de seguridad</td>
-              <td><span class="ko">×</span></td>
-              <td class="featured-col">Mensual</td>
-              <td>Continua</td>
-            </tr>
-            <tr>
-              <td>Monitorización 24/7</td>
-              <td><span class="ko">×</span></td>
-              <td class="featured-col"><span class="ko">×</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr>
-              <td>Hardening avanzado</td>
-              <td><span class="ko">×</span></td>
-              <td class="featured-col"><span class="ko">×</span></td>
-              <td><span class="ok">✓</span></td>
-            </tr>
-            <tr class="price-row">
-              <td><strong>Precio mensual</strong></td>
-              <td><strong>199 €</strong></td>
-              <td class="featured-col"><strong>449 €</strong></td>
-              <td><strong>899 €</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading center reveal">
-        <span class="section-tag">Preguntas frecuentes</span>
-        <h2>Resuelve tus <span class="gradient-text">dudas</span></h2>
-      </div>
-
-      <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>¿Hay permanencia o cuotas de alta?</summary>
-          <p>No. Trabajamos sin permanencia. Solo te pedimos un preaviso de 30 días si decides darte de baja.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Puedo cambiar de plan más adelante?</summary>
-          <p>Sí, puedes subir o bajar de plan en cualquier momento. El cambio se aplica en la siguiente facturación.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Los precios incluyen IVA?</summary>
-          <p>Los precios mostrados son <strong>sin IVA</strong>. Se aplicará el IVA correspondiente según tu localización.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué pasa si tengo una empresa muy grande?</summary>
-          <p>Para entornos con muchos equipos/usuarios o requisitos especiales, contáctanos para un presupuesto personalizado adaptado a tu infraestructura.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Ofrecéis prueba gratuita?</summary>
-          <p>Ofrecemos una <strong>auditoría inicial gratuita</strong> de tu infraestructura para que podamos recomendarte el plan que mejor se adapta a tus necesidades.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué incluye exactamente la "Monitorización 24/7"?</summary>
-          <p>Vigilancia continua de tus sistemas mediante nuestro SOC. Detectamos eventos sospechosos en tiempo real, respondemos a alertas y te avisamos ante cualquier incidente, sea de día o de noche.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-box reveal">
-        <div class="cta-glow"></div>
-        <div class="cta-text">
-          <span class="section-tag light">¿No lo tienes claro?</span>
-          <h2>Te ayudamos a elegir el plan ideal</h2>
-          <p>Cuéntanos tu situación y te recomendaremos la opción que mejor encaja con tu empresa, sin compromiso.</p>
-        </div>
-        <a href="index.html#contacto" class="btn btn-primary btn-lg">
+  <main id="main-content" tabindex="-1"><!-- Glow global de fondo --><!-- Page Hero --><section class="page-hero">
+<div aria-hidden="true" class="hero-bg">
+<div class="grid-pattern"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+</div>
+<div class="container">
+<nav class="breadcrumb"><a href="index.html">Inicio</a> <span>›</span> <span>Planes</span></nav>
+<span class="badge"><span class="badge-dot"></span>Planes y precios</span>
+<h1>Elige el plan que <span class="gradient-text">mejor se adapta</span> a ti</h1>
+<p>Tres niveles diseñados para cubrir desde necesidades básicas hasta protección avanzada 24/7. Sin permanencia, sin sorpresas.</p>
+</div>
+</section><!-- Pricing --><section class="section pricing-section">
+<div class="container">
+<div class="pricing-grid">
+<!-- BASE -->
+<article class="pricing-card reveal">
+<div class="pricing-header">
+<span class="pricing-tag">Esenciales</span>
+<h3>Base</h3>
+<p class="pricing-desc">Para pequeñas empresas que necesitan cubrir lo fundamental.</p>
+</div>
+<div class="pricing-price">
+<span class="price-amount">199<span class="price-currency">€</span></span>
+<span class="price-period">/mes</span>
+</div>
+<ul class="pricing-features">
+<li><span class="check">✓</span> Soporte por tickets (horario laboral)</li>
+<li><span class="check">✓</span> Mantenimiento y actualizaciones</li>
+<li><span class="check">✓</span> Antivirus/EDR básico</li>
+<li><span class="check">✓</span> Informe periódico simplificado</li>
+<li class="muted"><span class="cross">×</span> Gestión de backups</li>
+<li class="muted"><span class="cross">×</span> Monitorización 24/7</li>
+<li class="muted"><span class="cross">×</span> Hardening avanzado</li>
+</ul>
+<a class="btn btn-ghost btn-block" href="index.html#contacto">Empezar con Base</a>
+</article>
+<!-- PRO (Destacado) -->
+<article class="pricing-card featured reveal">
+<div class="pricing-badge">⭐ Más popular</div>
+<div class="pricing-header">
+<span class="pricing-tag">Recomendado</span>
+<h3>Pro</h3>
+<p class="pricing-desc">Para empresas que buscan un equilibrio entre protección y precio.</p>
+</div>
+<div class="pricing-price">
+<span class="price-amount">449<span class="price-currency">€</span></span>
+<span class="price-period">/mes</span>
+</div>
+<ul class="pricing-features">
+<li class="highlight"><span class="check">✓</span> <strong>Todo lo del plan Base, y además:</strong></li>
+<li><span class="check">✓</span> Gestión de backups y recuperación (según alcance)</li>
+<li><span class="check">✓</span> Soporte con prioridad media</li>
+<li><span class="check">✓</span> Revisión mensual de seguridad</li>
+<li class="muted"><span class="cross">×</span> Monitorización 24/7</li>
+<li class="muted"><span class="cross">×</span> Hardening avanzado</li>
+</ul>
+<a class="btn btn-primary btn-block" href="index.html#contacto">Empezar con Pro</a>
+</article>
+<!-- PREMIUM -->
+<article class="pricing-card premium reveal">
+<div class="pricing-header">
+<span class="pricing-tag">Máxima protección</span>
+<h3>Premium</h3>
+<p class="pricing-desc">Para entornos críticos donde la disponibilidad lo es todo.</p>
+</div>
+<div class="pricing-price">
+<span class="price-amount">899<span class="price-currency">€</span></span>
+<span class="price-period">/mes</span>
+</div>
+<ul class="pricing-features">
+<li class="highlight"><span class="check">✓</span> <strong>Todo lo del plan Pro, y además:</strong></li>
+<li><span class="check premium-check">✓</span> <strong>Monitorización 24/7</strong></li>
+<li><span class="check premium-check">✓</span> Respuesta prioritaria</li>
+<li><span class="check premium-check">✓</span> Hardening avanzado y revisión periódica</li>
+</ul>
+<a class="btn btn-ghost btn-block" href="index.html#contacto">Empezar con Premium</a>
+</article>
+</div>
+<p class="pricing-note">
+<em>* Precios orientativos. Ajuste según nº de equipos/usuarios y criticidad. Solicita un presupuesto personalizado para tu caso concreto.</em>
+</p>
+</div>
+</section><!-- Comparativa rápida --><section class="section section-dark">
+<div class="container">
+<div class="section-heading center reveal">
+<span class="section-tag light">Comparativa rápida</span>
+<h2>Compara los <span class="gradient-text">planes</span></h2>
+<p>Una vista rápida de las características incluidas en cada plan.</p>
+</div>
+<div class="compare-table-wrap reveal" tabindex="0" aria-label="Tabla comparativa de planes. Desplázate horizontalmente si es necesario.">
+<table class="compare-table">
+<caption>Comparativa de características y precios de los planes Secuvall</caption>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Base</th>
+<th class="featured-col">Pro ⭐</th>
+<th>Premium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Soporte por tickets (horario laboral)</td>
+<td><span class="ok">✓</span></td>
+<td class="featured-col"><span class="ok">✓</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr>
+<td>Mantenimiento y actualizaciones</td>
+<td><span class="ok">✓</span></td>
+<td class="featured-col"><span class="ok">✓</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr>
+<td>Antivirus / EDR básico</td>
+<td><span class="ok">✓</span></td>
+<td class="featured-col"><span class="ok">✓</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr>
+<td>Informe periódico</td>
+<td>Simplificado</td>
+<td class="featured-col">Simplificado</td>
+<td>Detallado</td>
+</tr>
+<tr>
+<td>Gestión de backups y recuperación</td>
+<td><span class="ko">×</span></td>
+<td class="featured-col"><span class="ok">✓</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr>
+<td>Prioridad de soporte</td>
+<td>Estándar</td>
+<td class="featured-col">Media</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Revisión periódica de seguridad</td>
+<td><span class="ko">×</span></td>
+<td class="featured-col">Mensual</td>
+<td>Continua</td>
+</tr>
+<tr>
+<td>Monitorización 24/7</td>
+<td><span class="ko">×</span></td>
+<td class="featured-col"><span class="ko">×</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr>
+<td>Hardening avanzado</td>
+<td><span class="ko">×</span></td>
+<td class="featured-col"><span class="ko">×</span></td>
+<td><span class="ok">✓</span></td>
+</tr>
+<tr class="price-row">
+<td><strong>Precio mensual</strong></td>
+<td><strong>199 €</strong></td>
+<td class="featured-col"><strong>449 €</strong></td>
+<td><strong>899 €</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><!-- FAQ --><section class="section">
+<div class="container">
+<div class="section-heading center reveal">
+<span class="section-tag">Preguntas frecuentes</span>
+<h2>Resuelve tus <span class="gradient-text">dudas</span></h2>
+</div>
+<div class="faq-list reveal">
+<details class="faq-item">
+<summary>¿Hay permanencia o cuotas de alta?</summary>
+<p>No. Trabajamos sin permanencia. Solo te pedimos un preaviso de 30 días si decides darte de baja.</p>
+</details>
+<details class="faq-item">
+<summary>¿Puedo cambiar de plan más adelante?</summary>
+<p>Sí, puedes subir o bajar de plan en cualquier momento. El cambio se aplica en la siguiente facturación.</p>
+</details>
+<details class="faq-item">
+<summary>¿Los precios incluyen IVA?</summary>
+<p>Los precios mostrados son <strong>sin IVA</strong>. Se aplicará el IVA correspondiente según tu localización.</p>
+</details>
+<details class="faq-item">
+<summary>¿Qué pasa si tengo una empresa muy grande?</summary>
+<p>Para entornos con muchos equipos/usuarios o requisitos especiales, contáctanos para un presupuesto personalizado adaptado a tu infraestructura.</p>
+</details>
+<details class="faq-item">
+<summary>¿Ofrecéis prueba gratuita?</summary>
+<p>Ofrecemos una <strong>auditoría inicial gratuita</strong> de tu infraestructura para que podamos recomendarte el plan que mejor se adapta a tus necesidades.</p>
+</details>
+<details class="faq-item">
+<summary>¿Qué incluye exactamente la "Monitorización 24/7"?</summary>
+<p>Vigilancia continua de tus sistemas mediante nuestro SOC. Detectamos eventos sospechosos en tiempo real, respondemos a alertas y te avisamos ante cualquier incidente, sea de día o de noche.</p>
+</details>
+</div>
+</div>
+</section><!-- CTA --><section class="cta-section">
+<div class="container">
+<div class="cta-box reveal">
+<div class="cta-glow"></div>
+<div class="cta-text">
+<span class="section-tag light">¿No lo tienes claro?</span>
+<h2>Te ayudamos a elegir el plan ideal</h2>
+<p>Cuéntanos tu situación y te recomendaremos la opción que mejor encaja con tu empresa, sin compromiso.</p>
+</div>
+<a class="btn btn-primary btn-lg" href="index.html#contacto">
           Solicitar asesoramiento
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+          <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+</a>
+</div>
+</div>
+</section><!-- Footer --></main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <a href="index.html" class="brand brand-footer">
-            <span class="brand-mark">
-              <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-                <defs><linearGradient id="lgFP" x1="0" y1="0" x2="32" y2="32"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-                <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lgFP)" stroke-width="2.2" stroke-linejoin="round"/>
-                <path d="M11 16l3.5 3.5L21 12" stroke="url(#lgFP)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="brand-text">SECUVALL</span>
-          </a>
-          <p class="footer-about">Soluciones profesionales en ciberseguridad, vigilancia y servicios auxiliares.</p>
-        </div>
-        <div>
-          <h4>Navegación</h4>
-          <ul>
-            <li><a href="index.html#empresa">Empresa</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="planes.html">Planes</a></li>
-            <li><a href="planes.html">Planes</a></li>
- <li><a href="blog.html">Blog</a></li>
-            <li><a href="index.html#contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="aviso-legal.html">Aviso legal</a></li>
-            <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-            <li><a href="politica-cookies.html">Política de cookies</a></li>
-            <li><a href="#" id="cookiesReopen">Configurar cookies</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="tel:+34600000000">+34 600 000 000</a></li>
-            <li><a href="/cdn-cgi/l/email-protection#7d14131b123d0e181e080b1c1111531e1210"><span class="__cf_email__" data-cfemail="91f8fff7fed1e2f4f2e4e7f0fdfdbff2fefc">[email&#160;protected]</span></a></li>
-            <li>Galicia, España</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> Secuvall · Todos los derechos reservados</span>
-        <span class="footer-meta">Proyecto intermodular · 2º SMR</span>
-      </div>
-    </div>
-  </footer>
+  <div data-component="site-footer"></div>
 
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
+  <div data-component="cookie-consent"></div>
 
-  <div class="cookie-banner" id="cookieBanner" hidden>
-    <div class="cookie-content">
-      <div class="cookie-text">
-        <h4>🍪 Usamos cookies</h4>
-        <p>Utilizamos cookies para mejorar tu experiencia. Más info en <a href="politica-cookies.html">política de cookies</a>.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-ghost btn-sm" id="cookieReject">Rechazar</button>
-        <button class="btn btn-ghost btn-sm" id="cookieConfig">Configurar</button>
-        <button class="btn btn-primary btn-sm" id="cookieAccept">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="cookie-modal" id="cookieModal" hidden>
-    <div class="cookie-modal-backdrop" data-close></div>
-    <div class="cookie-modal-content">
-      <button class="cookie-modal-close" data-close>×</button>
-      <h3>Configurar cookies</h3>
-      <p>Elige qué cookies quieres permitir.</p>
-      <div class="cookie-option"><div><strong>Cookies técnicas</strong><p>Necesarias para el funcionamiento.</p></div><label class="switch disabled"><input type="checkbox" checked disabled><span class="slider"></span></label></div>
-      <div class="cookie-option"><div><strong>Cookies analíticas</strong><p>Nos ayudan a mejorar la web.</p></div><label class="switch"><input type="checkbox" id="cookieAnalytics"><span class="slider"></span></label></div>
-      <div class="cookie-option"><div><strong>Cookies de marketing</strong><p>Para mostrar contenido relevante.</p></div><label class="switch"><input type="checkbox" id="cookieMarketing"><span class="slider"></span></label></div>
-      <div class="cookie-modal-actions">
-        <button class="btn btn-ghost" id="cookieSavePrefs">Guardar preferencias</button>
-        <button class="btn btn-primary" id="cookieAcceptAll">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f7fe0655e84c616',t:'MTc3ODE1MzI1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <div data-component="back-to-top"></div>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fe2199faa6cbd84',t:'MTc3OTE4MzIwNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

@@ -1,341 +1,197 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+
+<html data-theme="dark" lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Servicios de Secuvall: vigilancia, ciberseguridad, control de accesos, monitorización 24/7 y servicios auxiliares." />
-  <meta name="theme-color" content="#0a0e27" />
-  <title>Servicios | Secuvall</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Servicios de Secuvall: vigilancia, ciberseguridad, control de accesos, monitorización 24/7 y servicios auxiliares." name="description"/>
+<meta content="#0a0e27" name="theme-color"/>
+<title>Servicios | Secuvall</title>
+<link href="img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<script>
     (function(){ try { var t=localStorage.getItem('secuvall-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); } catch(e){} })();
   </script>
-</head>
+  <link href="https://rodriomat-source.github.io/secuvall-web/servicios.html" rel="canonical"/>
+  <meta content="https://rodriomat-source.github.io/secuvall-web/servicios.html" property="og:url"/>
+  <meta content="https://rodriomat-source.github.io/secuvall-web/img/empresa-real.webp" property="og:image"/></head>
 <body>
+  <div data-component="site-header"></div>
 
-  <div class="scroll-progress"></div>
-
-  <header class="topbar" id="topbar">
-  <div class="container topbar-content">
-    <a href="index.html" class="brand" aria-label="Secuvall — Inicio">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4f7cff"/>
-              <stop offset="1" stop-color="#9d5cff"/>
-            </linearGradient>
-          </defs>
-          <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lg1)" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M11 16l3.5 3.5L21 12" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="brand-text">SECUVALL</span>
-    </a>
-
-    <nav class="nav" id="navMenu" aria-label="Navegación principal">
-      <a href="index.html#inicio" class="nav-link active">Inicio</a>
-      <a href="index.html#empresa" class="nav-link">Empresa</a>
-      <a href="index.html#servicios" class="nav-link">Servicios</a>
-      <a href="planes.html" class="nav-link">Planes</a>
-      <a href="index.html#sectores" class="nav-link">Sectores</a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <a href="index.html#contacto" class="nav-link">Contacto</a>
-
-      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-
-      <a href="index.html#contacto" class="btn btn-nav">Solicitar info</a>
-    </nav>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="grid-pattern"></div>
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-    </div>
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Inicio</a> <span>›</span> <span>Servicios</span>
-      </nav>
-      <span class="badge"><span class="badge-dot"></span>Catálogo completo</span>
-      <h1>Nuestros <span class="gradient-text">servicios</span></h1>
-      <p>Soluciones integrales de seguridad y ciberseguridad diseñadas a medida para empresas, instituciones y entornos críticos.</p>
-    </div>
-  </section>
-
-  <!-- Servicios detallados -->
-  <section class="section">
-    <div class="container">
-
-      <article class="service-detail reveal" id="vigilancia">
-        <div>
-          <span class="section-tag">01</span>
-          <h2>Vigilancia y seguridad</h2>
-          <p>Servicios de protección física para instalaciones, bienes y personas. Diseñamos protocolos adaptados al nivel de riesgo y a las características específicas de cada entorno.</p>
-          <ul>
-            <li>Vigilantes de seguridad acreditados</li>
-            <li>Rondas y patrullaje perimetral</li>
-            <li>Protección de eventos y visitas VIP</li>
-            <li>Coordinación con fuerzas de seguridad</li>
-            <li>Informes diarios de actividad</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg1" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <path d="M100 20L40 50v45c0 35 25 60 60 75 35-15 60-40 60-75V50l-60-30z" stroke="url(#sg1)" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M75 100l18 18 35-40" stroke="url(#sg1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </article>
-
-      <article class="service-detail reverse reveal" id="accesos">
-        <div>
-          <span class="section-tag">02</span>
-          <h2>Control de accesos</h2>
-          <p>Gestión integral de entradas y salidas con verificación de identidad, registro de visitas y organización eficiente del flujo de personas y vehículos.</p>
-          <ul>
-            <li>Sistemas biométricos y RFID</li>
-            <li>Tornos, barreras y compuertas automatizadas</li>
-            <li>Gestión de visitantes con preregistro</li>
-            <li>Integración con CCTV y alarmas</li>
-            <li>Trazabilidad y reportes en tiempo real</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg2" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <rect x="40" y="80" width="120" height="100" rx="8" stroke="url(#sg2)" stroke-width="3"/>
-            <path d="M65 80V55a35 35 0 0170 0v25" stroke="url(#sg2)" stroke-width="3"/>
-            <circle cx="100" cy="125" r="10" stroke="url(#sg2)" stroke-width="3"/>
-            <path d="M100 135v15" stroke="url(#sg2)" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </article>
-
-      <article class="service-detail reveal" id="ciberseguridad">
-        <div>
-          <span class="section-tag">03</span>
-          <h2>Ciberseguridad</h2>
-          <p>Protección integral de tu infraestructura digital. Auditamos, monitorizamos y respondemos a amenazas para mantener tus sistemas y datos seguros las 24 horas.</p>
-          <ul>
-            <li>Auditoría de seguridad y pentesting</li>
-            <li>Hardening de sistemas y servidores</li>
-            <li>Monitorización SIEM 24/7</li>
-            <li>Análisis de vulnerabilidades CVE</li>
-            <li>Respuesta a incidentes y forense digital</li>
-            <li>Formación en concienciación al personal</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg3" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <rect x="30" y="50" width="140" height="90" rx="6" stroke="url(#sg3)" stroke-width="3"/>
-            <path d="M70 160h60M100 140v20" stroke="url(#sg3)" stroke-width="3" stroke-linecap="round"/>
-            <path d="M60 75h80M60 90h60M60 105h70" stroke="url(#sg3)" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="150" cy="78" r="4" fill="url(#sg3)"/>
-          </svg>
-        </div>
-      </article>
-
-      <article class="service-detail reverse reveal" id="cobertura">
-        <div>
-          <span class="section-tag">04</span>
-          <h2>Cobertura personalizada</h2>
-          <p>Estudio detallado de necesidades y diseño de soluciones a medida. Cada cliente recibe una propuesta única adaptada a su sector, riesgos y normativa aplicable.</p>
-          <ul>
-            <li>Análisis de riesgos y vulnerabilidades</li>
-            <li>Plan de seguridad personalizado</li>
-            <li>Asesoramiento normativo (ENS, RGPD, ISO 27001)</li>
-            <li>Implantación gradual y formación</li>
-            <li>Revisión y actualización periódica</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg4" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <path d="M170 85c0 60-70 105-70 105s-70-45-70-105a70 70 0 01140 0z" stroke="url(#sg4)" stroke-width="3"/>
-            <circle cx="100" cy="85" r="22" stroke="url(#sg4)" stroke-width="3"/>
-          </svg>
-        </div>
-      </article>
-
-      <article class="service-detail reveal" id="auxiliares">
-        <div>
-          <span class="section-tag">05</span>
-          <h2>Servicios auxiliares</h2>
-          <p>Personal cualificado para tareas de apoyo operativo: recepciones, conserjería, supervisión y atención al cliente, complementando los servicios de seguridad.</p>
-          <ul>
-            <li>Recepción y atención al visitante</li>
-            <li>Conserjería en comunidades</li>
-            <li>Supervisión de instalaciones</li>
-            <li>Coordinación de mantenimiento</li>
-            <li>Apoyo en eventos y congresos</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg5" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <circle cx="100" cy="100" r="20" stroke="url(#sg5)" stroke-width="3"/>
-            <path d="M150 130a1 1 0 00.2 1.2l.1.1a3 3 0 11-4.2 4.2l-.1-.1a1 1 0 00-1.2-.2 1 1 0 00-.6 1V137a3 3 0 11-6 0v-.1a1 1 0 00-.6-1 1 1 0 00-1.2.2l-.1.1a3 3 0 11-4.2-4.2l.1-.1a1 1 0 00.2-1.2 1 1 0 00-1-.6H131a3 3 0 110-6h.1a1 1 0 001-.6 1 1 0 00-.2-1.2l-.1-.1a3 3 0 114.2-4.2l.1.1a1 1 0 001.2.2h.1a1 1 0 00.6-1V117a3 3 0 116 0v.1a1 1 0 00.6 1 1 1 0 001.2-.2l.1-.1a3 3 0 114.2 4.2l-.1.1a1 1 0 00-.2 1.2v.1a1 1 0 001 .6h.1a3 3 0 110 6h-.1a1 1 0 00-1 .6z" stroke="url(#sg5)" stroke-width="2.5"/>
-          </svg>
-        </div>
-      </article>
-
-      <article class="service-detail reverse reveal" id="monitorizacion">
-        <div>
-          <span class="section-tag">06</span>
-          <h2>Monitorización 24/7</h2>
-          <p>Centro de operaciones permanente con monitorización en tiempo real de alarmas, cámaras y eventos. Respuesta inmediata ante cualquier incidente.</p>
-          <ul>
-            <li>Sala de control operativa 24/7/365</li>
-            <li>Recepción de alarmas certificada</li>
-            <li>Verificación por vídeo en tiempo real</li>
-            <li>Despacho de servicios de emergencia</li>
-            <li>Reportes automáticos y dashboards</li>
-            <li>Integración con sistemas SCADA/IoT</li>
-          </ul>
-        </div>
-        <div class="service-image">
-          <svg viewBox="0 0 200 200" fill="none">
-            <defs><linearGradient id="sg6" x1="0" y1="0" x2="200" y2="200"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-            <path d="M180 100h-30l-25 70-50-140-25 70H20" stroke="url(#sg6)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-box reveal">
-        <div class="cta-glow"></div>
-        <div class="cta-text">
-          <span class="section-tag light">¿Hablamos?</span>
-          <h2>Diseñemos juntos tu solución de seguridad</h2>
-          <p>Cuéntanos tus necesidades y te haremos una propuesta sin compromiso.</p>
-        </div>
-        <a href="index.html#contacto" class="btn btn-primary btn-lg">
+  <main id="main-content" tabindex="-1"><div class="scroll-progress"></div><!-- Page Hero --><section class="page-hero">
+<div aria-hidden="true" class="hero-bg">
+<div class="grid-pattern"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+</div>
+<div class="container">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="index.html">Inicio</a> <span>›</span> <span>Servicios</span>
+</nav>
+<span class="badge"><span class="badge-dot"></span>Catálogo completo</span>
+<h1>Nuestros <span class="gradient-text">servicios</span></h1>
+<p>Soluciones integrales de seguridad y ciberseguridad diseñadas a medida para empresas, instituciones y entornos críticos.</p>
+</div>
+</section><!-- Servicios detallados --><section class="section">
+<div class="container">
+<article class="service-detail reveal" id="vigilancia">
+<div>
+<span class="section-tag">01</span>
+<h2>Vigilancia y seguridad</h2>
+<p>Servicios de protección física para instalaciones, bienes y personas. Diseñamos protocolos adaptados al nivel de riesgo y a las características específicas de cada entorno.</p>
+<ul>
+<li>Vigilantes de seguridad acreditados</li>
+<li>Rondas y patrullaje perimetral</li>
+<li>Protección de eventos y visitas VIP</li>
+<li>Coordinación con fuerzas de seguridad</li>
+<li>Informes diarios de actividad</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg1" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<path d="M100 20L40 50v45c0 35 25 60 60 75 35-15 60-40 60-75V50l-60-30z" stroke="url(#sg1)" stroke-linejoin="round" stroke-width="3"></path>
+<path d="M75 100l18 18 35-40" stroke="url(#sg1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+</svg>
+</div>
+</article>
+<article class="service-detail reverse reveal" id="accesos">
+<div>
+<span class="section-tag">02</span>
+<h2>Control de accesos</h2>
+<p>Gestión integral de entradas y salidas con verificación de identidad, registro de visitas y organización eficiente del flujo de personas y vehículos.</p>
+<ul>
+<li>Sistemas biométricos y RFID</li>
+<li>Tornos, barreras y compuertas automatizadas</li>
+<li>Gestión de visitantes con preregistro</li>
+<li>Integración con CCTV y alarmas</li>
+<li>Trazabilidad y reportes en tiempo real</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg2" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<rect height="100" rx="8" stroke="url(#sg2)" stroke-width="3" width="120" x="40" y="80"></rect>
+<path d="M65 80V55a35 35 0 0170 0v25" stroke="url(#sg2)" stroke-width="3"></path>
+<circle cx="100" cy="125" r="10" stroke="url(#sg2)" stroke-width="3"></circle>
+<path d="M100 135v15" stroke="url(#sg2)" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</article>
+<article class="service-detail reveal" id="ciberseguridad">
+<div>
+<span class="section-tag">03</span>
+<h2>Ciberseguridad</h2>
+<p>Protección integral de tu infraestructura digital. Auditamos, monitorizamos y respondemos a amenazas para mantener tus sistemas y datos seguros las 24 horas.</p>
+<ul>
+<li>Auditoría de seguridad y pentesting</li>
+<li>Hardening de sistemas y servidores</li>
+<li>Monitorización SIEM 24/7</li>
+<li>Análisis de vulnerabilidades CVE</li>
+<li>Respuesta a incidentes y forense digital</li>
+<li>Formación en concienciación al personal</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg3" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<rect height="90" rx="6" stroke="url(#sg3)" stroke-width="3" width="140" x="30" y="50"></rect>
+<path d="M70 160h60M100 140v20" stroke="url(#sg3)" stroke-linecap="round" stroke-width="3"></path>
+<path d="M60 75h80M60 90h60M60 105h70" stroke="url(#sg3)" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="150" cy="78" fill="url(#sg3)" r="4"></circle>
+</svg>
+</div>
+</article>
+<article class="service-detail reverse reveal" id="cobertura">
+<div>
+<span class="section-tag">04</span>
+<h2>Cobertura personalizada</h2>
+<p>Estudio detallado de necesidades y diseño de soluciones a medida. Cada cliente recibe una propuesta única adaptada a su sector, riesgos y normativa aplicable.</p>
+<ul>
+<li>Análisis de riesgos y vulnerabilidades</li>
+<li>Plan de seguridad personalizado</li>
+<li>Asesoramiento normativo (ENS, RGPD, ISO 27001)</li>
+<li>Implantación gradual y formación</li>
+<li>Revisión y actualización periódica</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg4" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<path d="M170 85c0 60-70 105-70 105s-70-45-70-105a70 70 0 01140 0z" stroke="url(#sg4)" stroke-width="3"></path>
+<circle cx="100" cy="85" r="22" stroke="url(#sg4)" stroke-width="3"></circle>
+</svg>
+</div>
+</article>
+<article class="service-detail reveal" id="auxiliares">
+<div>
+<span class="section-tag">05</span>
+<h2>Servicios auxiliares</h2>
+<p>Personal cualificado para tareas de apoyo operativo: recepciones, conserjería, supervisión y atención al cliente, complementando los servicios de seguridad.</p>
+<ul>
+<li>Recepción y atención al visitante</li>
+<li>Conserjería en comunidades</li>
+<li>Supervisión de instalaciones</li>
+<li>Coordinación de mantenimiento</li>
+<li>Apoyo en eventos y congresos</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg5" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<circle cx="100" cy="100" r="20" stroke="url(#sg5)" stroke-width="3"></circle>
+<path d="M150 130a1 1 0 00.2 1.2l.1.1a3 3 0 11-4.2 4.2l-.1-.1a1 1 0 00-1.2-.2 1 1 0 00-.6 1V137a3 3 0 11-6 0v-.1a1 1 0 00-.6-1 1 1 0 00-1.2.2l-.1.1a3 3 0 11-4.2-4.2l.1-.1a1 1 0 00.2-1.2 1 1 0 00-1-.6H131a3 3 0 110-6h.1a1 1 0 001-.6 1 1 0 00-.2-1.2l-.1-.1a3 3 0 114.2-4.2l.1.1a1 1 0 001.2.2h.1a1 1 0 00.6-1V117a3 3 0 116 0v.1a1 1 0 00.6 1 1 1 0 001.2-.2l.1-.1a3 3 0 114.2 4.2l-.1.1a1 1 0 00-.2 1.2v.1a1 1 0 001 .6h.1a3 3 0 110 6h-.1a1 1 0 00-1 .6z" stroke="url(#sg5)" stroke-width="2.5"></path>
+</svg>
+</div>
+</article>
+<article class="service-detail reverse reveal" id="monitorizacion">
+<div>
+<span class="section-tag">06</span>
+<h2>Monitorización 24/7</h2>
+<p>Centro de operaciones permanente con monitorización en tiempo real de alarmas, cámaras y eventos. Respuesta inmediata ante cualquier incidente.</p>
+<ul>
+<li>Sala de control operativa 24/7/365</li>
+<li>Recepción de alarmas certificada</li>
+<li>Verificación por vídeo en tiempo real</li>
+<li>Despacho de servicios de emergencia</li>
+<li>Reportes automáticos y dashboards</li>
+<li>Integración con sistemas SCADA/IoT</li>
+</ul>
+</div>
+<div class="service-image">
+<svg fill="none" viewbox="0 0 200 200">
+<defs><lineargradient id="sg6" x1="0" x2="200" y1="0" y2="200"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#9d5cff"></stop></lineargradient></defs>
+<path d="M180 100h-30l-25 70-50-140-25 70H20" stroke="url(#sg6)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+</article>
+</div>
+</section><!-- CTA --><section class="cta-section">
+<div class="container">
+<div class="cta-box reveal">
+<div class="cta-glow"></div>
+<div class="cta-text">
+<span class="section-tag light">¿Hablamos?</span>
+<h2>Diseñemos juntos tu solución de seguridad</h2>
+<p>Cuéntanos tus necesidades y te haremos una propuesta sin compromiso.</p>
+</div>
+<a class="btn btn-primary btn-lg" href="index.html#contacto">
           Solicitar presupuesto
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+          <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+</a>
+</div>
+</div>
+</section><!-- Footer --><!-- Cookie banner y modal (incluidos para que funcionen en todas las páginas) --></main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <a href="index.html" class="brand brand-footer">
-            <span class="brand-mark">
-              <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-                <defs><linearGradient id="lgFs" x1="0" y1="0" x2="32" y2="32"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#9d5cff"/></linearGradient></defs>
-                <path d="M16 2L4 7v9c0 7.5 5.1 13.5 12 14 6.9-.5 12-6.5 12-14V7L16 2z" stroke="url(#lgFs)" stroke-width="2.2" stroke-linejoin="round"/>
-                <path d="M11 16l3.5 3.5L21 12" stroke="url(#lgFs)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="brand-text">SECUVALL</span>
-          </a>
-          <p class="footer-about">Soluciones profesionales en ciberseguridad, vigilancia y servicios auxiliares.</p>
-        </div>
-        <div>
-          <h4>Navegación</h4>
-          <ul>
-            <li><a href="index.html#empresa">Empresa</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="index.html#sectores">Sectores</a></li>
-            <li><a href="planes.html">Planes</a></li>
- <li><a href="blog.html">Blog</a></li>
-            <li><a href="index.html#contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="aviso-legal.html">Aviso legal</a></li>
-            <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-            <li><a href="politica-cookies.html">Política de cookies</a></li>
-            <li><a href="#" id="cookiesReopen">Configurar cookies</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="tel:+34600000000">+34 600 000 000</a></li>
-            <li><a href="mailto:info@secuvall.com">info@secuvall.com</a></li>
-            <li>Galicia, España</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> Secuvall · Todos los derechos reservados</span>
-        <span class="footer-meta">Proyecto intermodular · 2º SMR</span>
-      </div>
-    </div>
-  </footer>
+  <div data-component="site-footer"></div>
 
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
+  <div data-component="cookie-consent"></div>
 
-  <!-- Cookie banner y modal (incluidos para que funcionen en todas las páginas) -->
-  <div class="cookie-banner" id="cookieBanner" hidden>
-    <div class="cookie-content">
-      <div class="cookie-text">
-        <h4>🍪 Usamos cookies</h4>
-        <p>Utilizamos cookies para mejorar tu experiencia. Más info en <a href="politica-cookies.html">política de cookies</a>.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-ghost btn-sm" id="cookieReject">Rechazar</button>
-        <button class="btn btn-ghost btn-sm" id="cookieConfig">Configurar</button>
-        <button class="btn btn-primary btn-sm" id="cookieAccept">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="cookie-modal" id="cookieModal" hidden>
-    <div class="cookie-modal-backdrop" data-close></div>
-    <div class="cookie-modal-content">
-      <button class="cookie-modal-close" data-close>×</button>
-      <h3>Configurar cookies</h3>
-      <p>Elige qué cookies quieres permitir.</p>
-      <div class="cookie-option">
-        <div><strong>Cookies técnicas</strong><p>Necesarias para el funcionamiento.</p></div>
-        <label class="switch disabled"><input type="checkbox" checked disabled><span class="slider"></span></label>
-      </div>
-      <div class="cookie-option">
-        <div><strong>Cookies analíticas</strong><p>Nos ayudan a mejorar la web.</p></div>
-        <label class="switch"><input type="checkbox" id="cookieAnalytics"><span class="slider"></span></label>
-      </div>
-      <div class="cookie-option">
-        <div><strong>Cookies de marketing</strong><p>Para mostrar contenido relevante.</p></div>
-        <label class="switch"><input type="checkbox" id="cookieMarketing"><span class="slider"></span></label>
-      </div>
-      <div class="cookie-modal-actions">
-        <button class="btn btn-ghost" id="cookieSavePrefs">Guardar preferencias</button>
-        <button class="btn btn-primary" id="cookieAcceptAll">Aceptar todas</button>
-      </div>
-    </div>
-  </div>
-
+  <div data-component="back-to-top"></div>
+  <script src="js/components.js"></script>
   <script src="js/main.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fe21ae878a6bd84',t:'MTc3OTE4MzI1OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
